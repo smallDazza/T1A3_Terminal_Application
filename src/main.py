@@ -6,8 +6,19 @@ from delivery_cost import package_cost
 
 
 def main_menu():
+    for i in range(30):
+        if i <= 30:
+            print("*", end =" ")
+            i += 1
+    print("\n")
+    print("Welcome to the Package Delivery Application.\n")
+        
     while True:
-        print("Welcome to the Package Delivery Application.\n")
+        for i in range(30):
+            if i <= 30:
+                print("*", end =" ")
+            i += 1
+        print("\n")
         print("Main Menu Options:\n")
         print("\t1. Package Deivery Cost Calculator.\n")
         print("\t2. Estimate Package Delivery Time.\n")
