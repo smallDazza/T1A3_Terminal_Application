@@ -57,6 +57,7 @@ def package_cost():
         package_weight = act_weight
     
     freight_value = freight_rate(package_weight)
+    delivery_job ["Package Calculated Weight"] = package_weight
 
     if package_weight > 5:
         charge = zone_charge(postcode_one, postcode_two)
@@ -74,7 +75,9 @@ def package_cost():
     \tReceivers Name: {receiver_name}\n
     \tReceivers Address: {receiver_address}\n
     \tReceivers Postcode: {receiver_postcode}\n
-    \tPackage Delivery Cost: {delivery_cost}\n """
+    \tPackage Calculated Weight: {package_weight}\n
+    \tPackage Delivery Cost: {delivery_cost}\n 
+    """
     print(message)
 
     while True:
@@ -82,7 +85,7 @@ def package_cost():
         if booking == "Y":
             job_number = random.randint(10000,99999)
             delivery_job ["Delivery Ticket Number"] = job_number
-            job_location = "/delivery_jobs"
+            job_location = "delivery_jobs"
             job_path = os.path.join(job_location, f"{job_number}.json") 
             with open(job_path, "w") as file:
                 json.dump(delivery_job, file, indent=4)
