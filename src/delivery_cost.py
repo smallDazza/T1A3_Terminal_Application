@@ -2,6 +2,7 @@
 from packages import post_zone, cubic_weight, freight_rate, zone_charge
 import random
 import json
+import os
 
 def package_cost():
     delivery_job = {}
@@ -79,9 +80,11 @@ def package_cost():
     while True:
         booking = input("Would you like to proceed and book this package delivery ? (Y for yes or N for no): ").upper()
         if booking == "Y":
-            job_number = random.randint(10000,19999)
+            job_number = random.randint(10000,99999)
             delivery_job ["Delivery Ticket Number"] = job_number
-            with open(f"{job_number}.json", "w") as file:
+            job_location = "/delivery_jobs"
+            job_path = os.path.join(job_location, f"{job_number}.json") 
+            with open(job_path, "w") as file:
                 json.dump(delivery_job, file, indent=4)
             print(f"Your delivery has been booked. Your ticket number is: {job_number}. Please record this ticket number.")
             break
