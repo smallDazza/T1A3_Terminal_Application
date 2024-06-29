@@ -11,13 +11,15 @@ This Package Delivery Application is to provide users an estimated delivery cost
 **Main Menu**: 
 Description - When users run the application the first area to be displayed is the Main Menu. This is where users can choose one of the features to use. There are 4 options: Package Delivery Cost Calculator, Estimate Package Delivery Times, Save a Delivery Receipt and Exit Application.
 
-![Main Menu](./docs/App%20Main%20Menu.png)
-
 Logic - The main menu logic is located in the main.py file. When users enter their choice number for the feature they want to use, it will then call the corresponding function imported from the file location. Entering the following numbers will call the following functions:
  - Number 1 --> will call the 'package_cost' function, located in the 'delivery_cost.py' file.
  - Number 2 --> will call the 'delivery_time' function, located in the 'delivery_time.py' file.
  - Number 3 --> will call the 'delivery_receipt' function, located in the 'delivery_receipt.py' file.
  - Number 4 --> will exit the application.
+
+Main Menu Image:
+![Main Menu](./docs/App%20Main%20Menu.png)
+____________________________________________________________
 
 **Feature One** - ***Package Delivery Cost Calculator:***
 Description - The Package Delivery Cost Calculator will estimate a delivery charge based on a number of user entered data inputs. This feature has been based on the current 2024 Australia Post Parcel Charges for the standard parcel delivery service only. These can be viewed from this pdf:
@@ -45,7 +47,9 @@ Logic - In the 'deliver_cost.py' file, is the package_cost function. From the pa
 
 Based on the user dimensions inputed, a cubic weight will be calculated. The greater of the two weights (weight entered or cubic weight), will be used as the package weight for the delivery cost. Their are 4 standard package weight rates upto 5kgs.If the package weight is above 5kg, then there is a extra surcharge rate for every extra 1kg (or part thereof) based on the two postcode zones.
 All the user inputs of sender name & contact, receiver name & address, postcodes, the package weight used and the delivery cost will be saved to a dictionary called delivery_job.
-[!NOTE]
+
+NOTE!:
+
 Australia Post DO NOT accept packages based on 3 values:
 1. A maximum package weight of 22kg.
 2. A maximum any dimension of 105cm.
@@ -55,6 +59,13 @@ If any one of these are entered by user of calculated, a warning will display ad
 Lastly the user is asked if they would like to book this delivery job by a 'Y or N' response. If 'N' the application will return to the main menu. If 'Y' a random number will be generated, this will be assigned as the job ticket number, added to the delivery_job dictionary, then written to a json file and saved as the ticket number in the delivery_jobs folder. Here is an example: 
 
 ![ticket number json file](./docs/json%20file%20saved.png)
-
+______________________________________________________________
 **Feature Two** - ***Estimate Package Delivery Times***
+Description - This feature for Estimate Package Delivery Times will ask the user to enter 2 postcode numbers, the senders postcode and the receivers postcode. Based on the 2 postcodes entered and the the postal zones they belong to, the application will display an estimated delivery time in number of days to the user. This feature has been based on the estimates from the Australia Post parcel post delivery estimator grid 2023. These can be viewed from this pdf:
+![Aust Post Parcel Delivery Estimates](./docs/AusPost%20Transit%20Grid%20Delivery%20Estimator%20August%202023%20update.pdf)
+
+Logic - In the delivery_estimate.py file, the delivery_time function will be called. From the packages folder, the delivery_estimate file is importing the following function and their uses:
+- post_zone from the postal_zones.py file = this uses the user postcodes entered to find & return a zone number the postcode belongs to. This post_zone function is being re-used in the same way as it was in the delivery_cost file.
+
+The user will be asked to input a sender postcode and a receiver postcode. This will return the postal zones these postcodes belong to.
 
