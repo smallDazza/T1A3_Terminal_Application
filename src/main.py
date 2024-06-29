@@ -15,7 +15,7 @@ def main_menu():
 
     print("\n")
     print("\tWelcome to the Package Delivery Application.\n")
-    message = """Important To Note:\nThis application is based on delivery costs & times from Australia Post.\nApplication costings DO NOT include packaging. Items must be in their own packaging.\n
+    message = """Important To Note:\nThis application is based on standard delivery costs & times from Australia Post.\nApplication costings DO NOT include express services or packaging.\nItems MUST be in their own packaging.\n
     """  
     print (message)
     while True:
@@ -27,7 +27,7 @@ def main_menu():
         print("\n")
         print("Main Menu Options:\n")
         print("\t1 - 💰 Package Deivery Cost Calculator.\n")
-        print("\t2 - ⏱️  Estimate Package Delivery Time.\n")
+        print("\t2 - ⏱️  Estimate Package Delivery Times.\n")
         print("\t3 - 🧾 Save a Delivery Receipt.\n")
         print("\t4 - 👋 Exit Application.\n")
         choice = int(input("Please type the number for your option selection: "))
