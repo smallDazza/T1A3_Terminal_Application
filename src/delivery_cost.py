@@ -1,5 +1,5 @@
 
-from packages import cubic_weight, freight_rate, zone_charge, send_code, receive_code
+from packages import cubic_weight, freight_rate, zone_charge, send_code
 import random
 import json
 import os
@@ -11,20 +11,20 @@ def package_cost():
     sender_contact = input("Please enter the senders contact number: ")
     delivery_job ["Senders Contact"] = sender_contact
     
-    senders_postcode = int(input("Please enter the postcode sending the package from: "))
-    postcode_one = send_code(senders_postcode)
+    postcode_send = int(input("Please enter the postcode sending the package from: "))
+    senders_list = send_code(postcode_send)
     
-    delivery_job ["Sender Postcode"] = senders_postcode
+    delivery_job ["Sender Postcode"] = senders_list[0]
 
     receiver_name = input("Please enter the receivers name: ")
     delivery_job ["Receiver Name"] = receiver_name
     receiver_address = input("Please enter the receivers street address:  ")
     delivery_job ["Receiver Address"] = receiver_address
     
-    receiver_postcode = int(input("Please enter the receivers postcode: "))
-    postcode_two = receive_code(receiver_postcode)
+    postcode_rece = int(input("Please enter the receivers postcode: "))
+    receivers_list = send_code(postcode_rece)
     
-    delivery_job ["Receiver Postcode"] = receiver_postcode
+    delivery_job ["Receiver Postcode"] = receivers_list[0]
 
     length = int(input("Please enter the package length. Length in centimetres is: "))
     width = int(input("Please enter the package width. Width in centimetres is: "))
@@ -53,7 +53,7 @@ def package_cost():
     delivery_job ["Package Calculated Weight"] = package_weight
 
     if package_weight > 5:
-        charge = zone_charge(postcode_one, postcode_two)
+        charge = zone_charge(senders_list[1], receivers_list[1])
         delivery_cost = freight_value + (charge*(package_weight - 5))
     else:
         delivery_cost = freight_value
@@ -64,10 +64,10 @@ def package_cost():
     Here are your package delivery details based on your entries:\n
     \tSenders Name: {sender_name}\n
     \tSenders Contact Number: {sender_contact}\n
-    \tSenders Postcode: {senders_postcode}\n
+    \tSenders Postcode: {senders_list[0]}\n
     \tReceivers Name: {receiver_name}\n
     \tReceivers Address: {receiver_address}\n
-    \tReceivers Postcode: {receiver_postcode}\n
+    \tReceivers Postcode: {receivers_list[0]}\n
     \tPackage Calculated Weight: {package_weight}\n
     \tPackage Delivery Cost: {delivery_cost}\n 
     """
