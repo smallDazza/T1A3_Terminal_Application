@@ -1,5 +1,5 @@
 
-from packages import post_zone, cubic_weight, freight_rate, zone_charge
+from packages import cubic_weight, freight_rate, zone_charge, send_code, receive_code
 import random
 import json
 import os
@@ -10,26 +10,19 @@ def package_cost():
     delivery_job ["Senders Name"] = sender_name
     sender_contact = input("Please enter the senders contact number: ")
     delivery_job ["Senders Contact"] = sender_contact
-    while True:
-        sender_postcode = int(input("Please enter the postcode sending the package from: "))
-        postcode_one = post_zone(sender_postcode)
-        if postcode_one == -1:
-            print("That postcode does not exist or cannot be delivered. Please try again.")
-        else:
-            break
     
-    delivery_job ["Sender Postcode"] = sender_postcode
+    senders_postcode = int(input("Please enter the postcode sending the package from: "))
+    postcode_one = send_code(senders_postcode)
+    
+    delivery_job ["Sender Postcode"] = senders_postcode
+
     receiver_name = input("Please enter the receivers name: ")
     delivery_job ["Receiver Name"] = receiver_name
     receiver_address = input("Please enter the receivers street address:  ")
     delivery_job ["Receiver Address"] = receiver_address
-    while True:
-        receiver_postcode = int(input("Please enter the receivers postcode: "))
-        postcode_two = post_zone(receiver_postcode)
-        if postcode_two == -1:
-            print("That postcode does not exist or cannot be delivered. Please try again.")
-        else:
-            break
+    
+    receiver_postcode = int(input("Please enter the receivers postcode: "))
+    postcode_two = receive_code(receiver_postcode)
     
     delivery_job ["Receiver Postcode"] = receiver_postcode
 
@@ -71,7 +64,7 @@ def package_cost():
     Here are your package delivery details based on your entries:\n
     \tSenders Name: {sender_name}\n
     \tSenders Contact Number: {sender_contact}\n
-    \tSenders Postcode: {sender_postcode}\n
+    \tSenders Postcode: {senders_postcode}\n
     \tReceivers Name: {receiver_name}\n
     \tReceivers Address: {receiver_address}\n
     \tReceivers Postcode: {receiver_postcode}\n

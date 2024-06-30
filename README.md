@@ -8,21 +8,23 @@
 This Package Delivery Application is to provide users an estimated delivery cost and delivery time for any items they are wanting to send within Australia based on their inputs of the package dimensions and weight. Should the user decide to go ahead with the quoted delivery, the application will generate a job delivery ticket number. This ticket number can also be used by the user to save a delivery receipt with all the delivery job details for future reference.
 
 ### Application Feature Outline:
-**Main Menu**: 
-Description - When users run the application the first area to be displayed is the Main Menu. This is where users can choose one of the features to use. There are 4 options: Package Delivery Cost Calculator, Estimate Package Delivery Times, Save a Delivery Receipt and Exit Application.
+#### **Main Menu**: 
+***Description*** - When users run the application the first area to be displayed is the Main Menu. This is where users can choose one of the features to use. There are 4 options: Package Delivery Cost Calculator, Estimate Package Delivery Times, Save a Delivery Receipt and Exit Application.
 
 Logic - The main menu logic is located in the main.py file. When users enter their choice number for the feature they want to use, it will then call the corresponding function imported from the file location. Entering the following numbers will call the following functions:
  - Number 1 --> will call the 'package_cost' function, located in the 'delivery_cost.py' file.
- - Number 2 --> will call the 'delivery_time' function, located in the 'delivery_time.py' file.
+ - Number 2 --> will call the 'delivery_time' function, located in the 'delivery_estimate.py' file.
  - Number 3 --> will call the 'delivery_receipt' function, located in the 'delivery_receipt.py' file.
  - Number 4 --> will exit the application.
 
 Main Menu Image:
+
 ![Main Menu](./docs/App%20Main%20Menu.png)
 ____________________________________________________________
 
-**Feature One** - ***Package Delivery Cost Calculator:***
-Description - The Package Delivery Cost Calculator will estimate a delivery charge based on a number of user entered data inputs. This feature has been based on the current 2024 Australia Post Parcel Charges for the standard parcel delivery service only. These can be viewed from this pdf:
+#### **Feature One**
+**Package Delivery Cost Calculator:**
+***Description*** - The Package Delivery Cost Calculator will estimate a delivery charge based on a number of user entered data inputs. This feature has been based on the current 2024 Australia Post Parcel Charges for the standard parcel delivery service only. These can be viewed from this pdf:
 [Aust Post Parcel Charges](./docs/Australia%20Post%20Parcel%20Post%20Charges%20as%20at%203%20April%202024.pdf)
 
 The user inputs are:
@@ -37,9 +39,11 @@ From the postcodes, dimensions and weight inputs a package delivery cost will be
 These will all be displayed to the user, who can choose to book the delivery job or not.
 If user chooses to book the delivery job, a delvery ticket number will be displayed for their future reference.
 
+Feature One Image:
+
 ![Feature One](./docs/Feature%201.png)
 
-Logic - In the 'deliver_cost.py' file, is the package_cost function. From the packages folder, the delivery_cost file is importing the following functions and their uses:
+***Logic*** - In the 'deliver_cost.py' file, is the package_cost function. From the packages folder, the delivery_cost file is importing the following functions and their uses:
  - post_zone from the postal_zones.py file = this uses the user postcodes entered to find & return a zone number the postcode belongs to.
  - cubic_weight from the volumetric_weight.py file = this calculates the cubic weight of the package based on the user inputs of length, width and height. 
  - freight_rate from the freight_rates.py file = based on the package weight to use, this returns a delivery rate for 4 different levels of package weight. The rate levels are: less than 0.5kg, between 0.5kg & 1kg, between 1kg & 3kg and then above 3kg. 
@@ -48,8 +52,7 @@ Logic - In the 'deliver_cost.py' file, is the package_cost function. From the pa
 Based on the user dimensions inputed, a cubic weight will be calculated. The greater of the two weights (weight entered or cubic weight), will be used as the package weight for the delivery cost. Their are 4 standard package weight rates upto 5kgs.If the package weight is above 5kg, then there is a extra surcharge rate for every extra 1kg (or part thereof) based on the two postcode zones.
 All the user inputs of sender name & contact, receiver name & address, postcodes, the package weight used and the delivery cost will be saved to a dictionary called delivery_job.
 
-NOTE!:
-
+NOTE:
 Australia Post DO NOT accept packages based on 3 values:
 1. A maximum package weight of 22kg.
 2. A maximum any dimension of 105cm.
@@ -60,12 +63,15 @@ Lastly the user is asked if they would like to book this delivery job by a 'Y or
 
 ![ticket number json file](./docs/json%20file%20saved.png)
 ______________________________________________________________
-**Feature Two** - ***Estimate Package Delivery Times***
-Description - This feature for Estimate Package Delivery Times will ask the user to enter 2 postcode numbers, the senders postcode and the receivers postcode. Based on the 2 postcodes entered and the the postal zones they belong to, the application will display an estimated delivery time in number of days to the user. This feature has been based on the estimates from the Australia Post parcel post delivery estimator grid 2023. These can be viewed from this pdf:
+
+#### **Feature Two**
+**Estimate Package Delivery Times:**
+***Description*** - This feature for Estimate Package Delivery Times will ask the user to enter 2 postcode numbers, the senders postcode and the receivers postcode. Based on the 2 postcodes entered and the the postal zones they belong to, the application will display an estimated delivery time in number of days to the user. This feature has been based on the estimates from the Australia Post parcel post delivery estimator grid 2023. These can be viewed from this pdf:
 ![Aust Post Parcel Delivery Estimates](./docs/AusPost%20Transit%20Grid%20Delivery%20Estimator%20August%202023%20update.pdf)
 
-Logic - In the delivery_estimate.py file, the delivery_time function will be called. From the packages folder, the delivery_estimate file is importing the following function and their uses:
-- post_zone from the postal_zones.py file = this uses the user postcodes entered to find & return a zone number the postcode belongs to. This post_zone function is being re-used in the same way as it was in the delivery_cost file.
+***Logic*** - In the delivery_estimate.py file, the delivery_time function will be called. From the packages folder, the delivery_estimate file is importing the following function and their uses:
+- post_zone from the postal_zones.py file = this uses the user postcodes entered to find & return a zone number the postcode belongs to. This post_zone function **is being re-used in the same way** as it was in the delivery_cost file.
 
-The user will be asked to input a sender postcode and a receiver postcode. This will return the postal zones these postcodes belong to.
+The sender and receiver postcodes inputed from the post_zone function will return the postal zones these postcodes belong to.
+
 
