@@ -1,5 +1,5 @@
 
-from packages import cubic_weight, freight_rate, zone_charge, send_code
+from del_cost_package import cubic_weight, freight_rate, zone_charge, send_code
 import random
 import json
 import os

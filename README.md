@@ -43,8 +43,10 @@ Feature One Image:
 
 ![Feature One](./docs/Feature%201.png)
 
-***Logic*** - In the 'deliver_cost.py' file, is the package_cost function. From the packages folder, the delivery_cost file is importing the following functions and their uses:
- - post_zone from the postal_zones.py file = this uses the user postcodes entered to find & return a zone number the postcode belongs to.
+***Logic*** - In the 'deliver_cost.py' file, is the package_cost function. From the del_cost_package folder, the delivery_cost file is importing the following functions and their uses:
+ - send_code from the postcode_entry.py file :
+    - postcode_entry.py also imports post_zone from the postal_zones.py file = this uses the user postcodes entered to find & return a zone number the postcode belongs to.
+    - send_code function handles if the postcodes entered by user are not valid. If so, asks the user to re-enter another postcode. Continues until a valid postcode entered. Then returns both valid postcode and zone number it belongs to, as a list format.
  - cubic_weight from the volumetric_weight.py file = this calculates the cubic weight of the package based on the user inputs of length, width and height. 
  - freight_rate from the freight_rates.py file = based on the package weight to use, this returns a delivery rate for 4 different levels of package weight. The rate levels are: less than 0.5kg, between 0.5kg & 1kg, between 1kg & 3kg and then above 3kg. 
  - zone_charge from the zone_surcharge.py file = should the weight to use be greater than 5kg, this file has a nested list to find the extra surcharge to be used based on the zone number returned in the post_zone function.
@@ -69,8 +71,8 @@ ______________________________________________________________
 ***Description*** - This feature for Estimate Package Delivery Times will ask the user to enter 2 postcode numbers, the senders postcode and the receivers postcode. Based on the 2 postcodes entered and the the postal zones they belong to, the application will display an estimated delivery time in number of days to the user. This feature has been based on the estimates from the Australia Post parcel post delivery estimator grid 2023. These can be viewed from this pdf:
 ![Aust Post Parcel Delivery Estimates](./docs/AusPost%20Transit%20Grid%20Delivery%20Estimator%20August%202023%20update.pdf)
 
-***Logic*** - In the delivery_estimate.py file, the delivery_time function will be called. From the packages folder, the delivery_estimate file is importing the following function and their uses:
-- post_zone from the postal_zones.py file = this uses the user postcodes entered to find & return a zone number the postcode belongs to. This post_zone function **is being re-used in the same way** as it was in the delivery_cost file.
+***Logic*** - In the delivery_estimate.py file, is the delivery_time function. From the del_time_package folder, the delivery_estimate file is importing the following function and their uses:
+- 
 
 The sender and receiver postcodes inputed from the post_zone function will return the postal zones these postcodes belong to.
 
