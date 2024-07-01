@@ -35,13 +35,13 @@ def package_cost():
     act_weight = int(input("Please enter the actual weight of the package. Weight in kilograms is: "))
 
     if length > 105 or width >105 or height > 105:
-        print("Apologies but a dimension was larger than 105cm. This is to large for Aust Post to accept over the counter. Please contact for delivery options.")
+        print("Apologies but a dimension was larger than 105cm. This is to large for Australia Post to accept over the counter. Please contact for delivery options.")
         return
     elif cub_weight == -1:
-        print("Apologies the cubic weight is larger than 0.25 cubic metres. This is to large for Aust Post to accept over the counter. Please contact for delivery options.")
+        print("Apologies the cubic weight is larger than 0.25 cubic metres. This is to large for Australia Post to accept over the counter. Please contact for delivery options.")
         return
     elif act_weight > 22:
-        print("Apologies but the weight is greater than 22kg. This is to large for Aust Post to accept over the counter. Please contact for delivery options.")
+        print("Apologies but the weight is greater than 22kg. This is to large for Australia Post to accept over the counter. Please contact for delivery options.")
         return
     
     if cub_weight > act_weight:
@@ -82,12 +82,12 @@ def package_cost():
             job_path = os.path.join(job_location, f"{job_number}.json") 
             with open(job_path, "w") as file:
                 json.dump(delivery_job, file, indent=4)
-            print(f"Your delivery has been booked. Your ticket number is: {job_number}. Please record this ticket number.")
+            print(f"Your delivery has been booked. Your ticket number is: {job_number}. Please record this ticket number for future reference.")
             break
         elif booking == "N":
             return
         else:
-            print("Invalid option. Please select Y for Yes OR N for No")
+            print("Invalid option. Please enter Y for Yes OR N for No")
 
     return
 

@@ -2,8 +2,8 @@
 # 
 
 from delivery_cost import package_cost
-# from delivery_time import delivery_time
-# from receipt import delivery_receipt
+from delivery_estimate import del_estimate
+from delivery_receipt import del_receipt
 
 
 def main_menu():
@@ -36,10 +36,10 @@ def main_menu():
             package_cost()
             
         elif choice == 2:
-            delivery_time()
+            del_estimate()
             
         elif choice == 3:
-            delivery_receipt()
+            del_receipt()
             
         elif choice == 4:
             return

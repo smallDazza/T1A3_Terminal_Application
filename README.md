@@ -71,8 +71,8 @@ ______________________________________________________________
 ***Description*** - This feature for Estimate Package Delivery Times will ask the user to enter 2 postcode numbers, the senders postcode and the receivers postcode. Based on the 2 postcodes entered and the the postal zones they belong to, the application will display an estimated delivery time in number of days to the user. This feature has been based on the estimates from the Australia Post parcel post delivery estimator grid 2023. These can be viewed from this pdf:
 ![Aust Post Parcel Delivery Estimates](./docs/AusPost%20Transit%20Grid%20Delivery%20Estimator%20August%202023%20update.pdf)
 
-***Logic*** - In the delivery_estimate.py file, is the delivery_time function. From the del_time_package folder, the delivery_estimate file is importing the following function and their uses:
-- 
+***Logic*** - In the delivery_estimate.py file, is the del_estimate function. From the del_time_package folder, the delivery_estimate file is importing the following function and their uses:
+- d
 
 The sender and receiver postcodes inputed from the post_zone function will return the postal zones these postcodes belong to.
 
