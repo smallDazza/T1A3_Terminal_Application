@@ -41,7 +41,7 @@ If user chooses to book the delivery job, a delvery ticket number will be displa
 
 Feature One Image:
 
-![Feature One](./docs/Feature%201.png)
+![Feature One](./docs/Feature%20One%20image.png)
 
 ***Logic*** - In the 'deliver_cost.py' file, is the package_cost function. From the del_cost_package folder, the delivery_cost file is importing the following functions and their uses:
  - send_code from the postcode_entry.py file :
@@ -71,9 +71,25 @@ ______________________________________________________________
 ***Description*** - This feature for Estimate Package Delivery Times will ask the user to enter 2 postcode numbers, the senders postcode and the receivers postcode. Based on the 2 postcodes entered and the the postal zones they belong to, the application will display an estimated delivery time in number of days to the user. This feature has been based on the estimates from the Australia Post parcel post delivery estimator grid 2023. These can be viewed from this pdf:
 ![Aust Post Parcel Delivery Estimates](./docs/AusPost%20Transit%20Grid%20Delivery%20Estimator%20August%202023%20update.pdf)
 
-***Logic*** - In the delivery_estimate.py file, is the del_estimate function. From the del_time_package folder, the delivery_estimate file is importing the following function and their uses:
-- d
+![feature Two](./docs/Feature%20Two%20image.png)
 
-The sender and receiver postcodes inputed from the post_zone function will return the postal zones these postcodes belong to.
+***Logic*** - In the delivery_estimate.py file, is the del_estimate function. The delivery_estimate file is importing the following functions and their uses:
+- send_code function from the postcode_entry.py file. This is re-used in exactly the same way a what it is in feature one.
+ - del_time function from the delivery_times file. This function will return a specific delivery time in the number of days based on the postal zones the postal codes belong to.
+
+The sender and receiver postcodes inputed from the post_zone function will return the postal zones these postcodes belong to. Then these zones will be used on the post_del_times list of delivery times for the same zones, which return the exact estimated delivery times between the 2 postal code zones according to the AusPost Transit Grid Delivery Estimator August 2023 update.pdf.
+
+#### **Feature Three**
+**Save A Delivery Receipt**
+***Description:*** - This feature will find a delivery ticket number entered by the user, then display the delivery job details of this ticket and ask the user if thay would like to save a receipt of this delivery job. If 'No' = then returns to the main menu. If 'Yes', it will save all of the details displayed of this delivery job to a text file to the 'delivery_receipts' folder.
+
+![Feature Three](./docs/Feature%20Three%20image.png)
+
+***Logic*** - The delivery_receipt.py file will import the python json & os modules. The del_receipt function will ask for a ticket number, then search & find this numbered json file located in the delivery_jobs folder. The individual values of this json ticket number will be then saved into variables and displayed to the user.
+
+The user will be asked to save a delivery receipt or not. If No = returns to main menu. If Yes = saves all the string variables to a text file located in the delivery_receipts folder.
+
+![Receipt txt file](./docs/Receipt%20text%20file%20saved.png)
+
 
 

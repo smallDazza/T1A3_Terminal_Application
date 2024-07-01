@@ -5,7 +5,7 @@ import os
 
 def del_receipt():
     ticket_num = input("Please enter your delivery ticket number: ")
-    ticket_path = f"delivery_jobs/{ticket_num}"
+    ticket_path = f"delivery_jobs/{ticket_num}.json"
 
     with open(ticket_path, 'r') as file:
         ticket = json.load(file)
@@ -40,10 +40,8 @@ def del_receipt():
             os.makedirs(job_location, exist_ok=True)
             job_path = os.path.join(job_location, f"{ticket_number}.txt") 
             with open(job_path, "w") as txt_file:
-                txt_file.write(f"Ticket number {ticket_number} delivery details are: ")
-                for x in ticket:
-                    txt_file.write(ticket)
-            print(f"Your delivery receipt has been saved.")
+                txt_file.write(message)
+            print(f"Your delivery receipt {ticket_number}.txt has been saved.")
             break
         elif choice == "N":
             return
@@ -51,5 +49,6 @@ def del_receipt():
             print("Invalid option. Please enter Y for Yes OR N for No")
 
     return
+
 
     
