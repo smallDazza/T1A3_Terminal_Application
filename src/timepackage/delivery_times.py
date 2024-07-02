@@ -9,7 +9,7 @@
 # Column N1,N2,V1,V2,Q1,Q2,Q3,Q4,S1,S2,NT1,W1,W2,W3,T1
 
 
-post_del_times = [
+delivery_daytimes = [
     ['2', '3-4', '2-3', '3-5', '2-3', '2-4', '3-5', '5-7', '2-4', '2-5', '4-7(Darwin)6-13(Other Areas)', '4-5', '5-8', '7-10', '3-5'],              #N1          
     ['3-4', '3-5', '3-6', ' 4-7', '4-6', '2-5', '4-7', '7-9', '3-5', '3-6', '5-9(Darwin)5-15(Other Areas)', '5-8', '5-9', '8-11', '4-7'],           #N2
     ['2-3', '4-5', '2-3', '3-4', '2-5', '3-6', '4-7', '6-8', '2-3', '3-5', '4-6(Darwin)4-14(Other Areas)', '4-5', '5-8', '8-10', '2-4'],            #V1
@@ -29,8 +29,10 @@ post_del_times = [
 
 # This function will return the string of 'Estimated Delivery time in number of days', by the zones returned from the post_zone function (postal_zones.py file).
 
+
 def del_time(zone_from, zone_to):
-    return post_del_times[zone_from][zone_to]
+    return delivery_daytimes[zone_from][zone_to]
+
 
 
 

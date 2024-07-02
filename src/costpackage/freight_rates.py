@@ -16,4 +16,5 @@ def freight_rate(package_weight):
       freight_value = 21.95
       return freight_value
    
+   
 # when returned to main = need to format using f"{value:.2f}" for 2 decimal places ??

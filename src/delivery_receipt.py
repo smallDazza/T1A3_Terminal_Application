@@ -34,7 +34,8 @@ def del_receipt():
     print(message)
 
     while True:
-        choice = input("Would you like to proceed and save a delivery receipt ? (Y for yes or N for no): ").upper()
+        choice = input("Would you like to proceed and save a delivery receipt ?"+ 
+                       "(Y for yes or N for no): ").upper()
         if choice == "Y":
             job_location = "delivery_receipts"
             os.makedirs(job_location, exist_ok=True)

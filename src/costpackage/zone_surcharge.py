@@ -21,8 +21,8 @@ post_zone_charges = [
     [3.45, 5.10, 1.70, 3.35, 4.50, 7.05, 7.65, 8.75, 3.50, 5.65, 8.10, 4.55, 8.10, 8.60, 1.05],         #T1 row
 ]
 
-
 # This function will return the surcharge rate for every 1kg above 5kg Package weight, from the post_zone function (postal_zones.py file)
+
 
 def zone_charge(zone_from, zone_to):
     return post_zone_charges[zone_from][zone_to]

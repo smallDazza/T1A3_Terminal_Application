@@ -15,7 +15,10 @@ def main_menu():
 
     print("\n")
     print("\tWelcome to the Package Delivery Application.\n")
-    message = """Important To Note:\nThis application is based on standard delivery costs & times from Australia Post.\nApplication costings DO NOT include express services or packaging.\nItems MUST be in their own packaging.\n
+    message = """Important To Note:\n
+    This application is based on standard delivery costs & times from Australia Post.\n
+    Application costings DO NOT include express services or packaging.\n
+    Items MUST be in their own packaging.\n
     """  
     print (message)
     while True:

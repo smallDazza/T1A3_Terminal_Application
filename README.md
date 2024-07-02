@@ -13,8 +13,8 @@ This Package Delivery Application is to provide users an estimated delivery cost
 
 Logic - The main menu logic is located in the main.py file. When users enter their choice number for the feature they want to use, it will then call the corresponding function imported from the file location. Entering the following numbers will call the following functions:
  - Number 1 --> will call the 'package_cost' function, located in the 'delivery_cost.py' file.
- - Number 2 --> will call the 'delivery_time' function, located in the 'delivery_estimate.py' file.
- - Number 3 --> will call the 'delivery_receipt' function, located in the 'delivery_receipt.py' file.
+ - Number 2 --> will call the 'del_estimate' function, located in the 'delivery_estimate.py' file.
+ - Number 3 --> will call the 'del_receipt' function, located in the 'delivery_receipt.py' file.
  - Number 4 --> will exit the application.
 
 Main Menu Image:
@@ -25,7 +25,7 @@ ____________________________________________________________
 #### **Feature One**
 **Package Delivery Cost Calculator:**
 ***Description*** - The Package Delivery Cost Calculator will estimate a delivery charge based on a number of user entered data inputs. This feature has been based on the current 2024 Australia Post Parcel Charges for the standard parcel delivery service only. These can be viewed from this pdf:
-[Aust Post Parcel Charges](./docs/Australia%20Post%20Parcel%20Post%20Charges%20as%20at%203%20April%202024.pdf)
+[Australia Post Parcel Charges 2024](./docs/Australia%20Post%20Parcel%20Post%20Charges%20as%20at%203%20April%202024.pdf)
 
 The user inputs are:
  - Sender name & contact number.
@@ -43,7 +43,7 @@ Feature One Image:
 
 ![Feature One](./docs/Feature%20One%20image.png)
 
-***Logic*** - In the 'deliver_cost.py' file, is the package_cost function. From the del_cost_package folder, the delivery_cost file is importing the following functions and their uses:
+***Logic*** - In the 'delivery_cost.py' file, is the package_cost function. From the costpackage folder, the delivery_cost file is importing the following functions and their uses:
  - send_code from the postcode_entry.py file :
     - postcode_entry.py also imports post_zone from the postal_zones.py file = this uses the user postcodes entered to find & return a zone number the postcode belongs to.
     - send_code function handles if the postcodes entered by user are not valid. If so, asks the user to re-enter another postcode. Continues until a valid postcode entered. Then returns both valid postcode and zone number it belongs to, as a list format.
@@ -59,7 +59,7 @@ Australia Post DO NOT accept packages based on 3 values:
 1. A maximum package weight of 22kg.
 2. A maximum any dimension of 105cm.
 3. A maximum cubic dimension of 0.25 cubic metres.
-If any one of these are entered by user of calculated, a warning will display advising the user to contact Aust Post for further instructions and return them to the main menu.
+If any one of these are entered by user or calculated, a warning will display advising the user to contact Aust Post for further instructions and return them to the main menu.
 
 Lastly the user is asked if they would like to book this delivery job by a 'Y or N' response. If 'N' the application will return to the main menu. If 'Y' a random number will be generated, this will be assigned as the job ticket number, added to the delivery_job dictionary, then written to a json file and saved as the ticket number in the delivery_jobs folder. Here is an example: 
 
@@ -69,27 +69,73 @@ ______________________________________________________________
 #### **Feature Two**
 **Estimate Package Delivery Times:**
 ***Description*** - This feature for Estimate Package Delivery Times will ask the user to enter 2 postcode numbers, the senders postcode and the receivers postcode. Based on the 2 postcodes entered and the the postal zones they belong to, the application will display an estimated delivery time in number of days to the user. This feature has been based on the estimates from the Australia Post parcel post delivery estimator grid 2023. These can be viewed from this pdf:
-![Aust Post Parcel Delivery Estimates](./docs/AusPost%20Transit%20Grid%20Delivery%20Estimator%20August%202023%20update.pdf)
+[Australia Post Parcel Delivery Estimates Grid 2023](./docs/AusPost%20Transit%20Grid%20Delivery%20Estimator%20August%202023%20update.pdf)
+
+Feature Two Image:
 
 ![feature Two](./docs/Feature%20Two%20image.png)
 
-***Logic*** - In the delivery_estimate.py file, is the del_estimate function. The delivery_estimate file is importing the following functions and their uses:
-- send_code function from the postcode_entry.py file. This is re-used in exactly the same way a what it is in feature one.
+***Logic*** - In the delivery_estimate.py file, is the del_estimate function. From both the costpackage & timepackage folders, the delivery_estimate file is importing the following functions and their uses:
+ - send_code function from the postcode_entry.py file. This is re-used in exactly the same way a what it is in feature one.
  - del_time function from the delivery_times file. This function will return a specific delivery time in the number of days based on the postal zones the postal codes belong to.
 
-The sender and receiver postcodes inputed from the post_zone function will return the postal zones these postcodes belong to. Then these zones will be used on the post_del_times list of delivery times for the same zones, which return the exact estimated delivery times between the 2 postal code zones according to the AusPost Transit Grid Delivery Estimator August 2023 update.pdf.
+The sender and receiver postcodes inputed from the post_zone function will return the postal zones these postcodes belong to. Then these zones will be used on the delivery_daytimes list of delivery times (for the same zones), which return the exact estimated delivery times (row, column) between the 2 postal code zones according to the AusPost Transit Grid Delivery Estimator August 2023 update pdf.
 
 #### **Feature Three**
 **Save A Delivery Receipt**
 ***Description:*** - This feature will find a delivery ticket number entered by the user, then display the delivery job details of this ticket and ask the user if thay would like to save a receipt of this delivery job. If 'No' = then returns to the main menu. If 'Yes', it will save all of the details displayed of this delivery job to a text file to the 'delivery_receipts' folder.
 
+Feature Three Image:
+
 ![Feature Three](./docs/Feature%20Three%20image.png)
 
 ***Logic*** - The delivery_receipt.py file will import the python json & os modules. The del_receipt function will ask for a ticket number, then search & find this numbered json file located in the delivery_jobs folder. The individual values of this json ticket number will be then saved into variables and displayed to the user.
 
-The user will be asked to save a delivery receipt or not. If No = returns to main menu. If Yes = saves all the string variables to a text file located in the delivery_receipts folder.
+The user will be asked to save a delivery receipt or not. If No = returns to main menu. If Yes = saves all the string variables to a text file located in the delivery_receipts folder.Here is a example:
 
 ![Receipt txt file](./docs/Receipt%20text%20file%20saved.png)
+
+### Package Delivery Application Design :
+
+#### Application Pseudocode:
+The application psuedocode has been designed in this pdf document:
+
+[Package Delivery Application Pseudocode pdf](./docs/Application%20Pseudocode.pdf)
+
+#### Application Flowchart :
+The application flowchart has has been designed using drawio. Please see the below image:
+
+![Package Delivery Application Flowchart](./docs/Package%20Delivery%20App%20Flowchart.png)
+
+#### Project Management Kanban Board :
+For the design and development steps of the Package Delivery Application, I have used a kanban board from Trello:
+
+Trello board - start project:
+
+![Trello board start](./docs/Trello%20start.png)
+
+Trello board - main setup and design done, start development:
+
+![Trello board -start development](./docs/Trello%20start%20coding.png)
+
+Trello board - testing phase:
+
+![Trello board - testing phase](./docs/Trello%20testing%20phase.png)
+
+Trello board - completed:
+
+
+
+#### Code Styling Guide :
+In coding the application using the Python language and using Visual Studio Code as the IDE. The Python style guide adhered to is 'PEP 8 – Style Guide for Python Code'.
+This PEP 8 style guide can be found here:
+
+[PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/)
+
+
+
+
+
 
 
 
