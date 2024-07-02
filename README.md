@@ -25,7 +25,7 @@ ____________________________________________________________
 #### **Feature One**
 **Package Delivery Cost Calculator:**
 ***Description*** - The Package Delivery Cost Calculator will estimate a delivery charge based on a number of user entered data inputs. This feature has been based on the current 2024 Australia Post Parcel Charges for the standard parcel delivery service only. These can be viewed from this pdf:
-[Australia Post Parcel Charges 2024](./docs/Australia%20Post%20Parcel%20Post%20Charges%20as%20at%203%20April%202024.pdf)
+[Australia Post Parcel Regular Service Charges 2024, Based on Pages 15,16 & 17 Rates](https://auspost.com.au/content/dam/auspost_corp/media/documents/post-guides/post-charges-guide-ms11.pdf)
 
 The user inputs are:
  - Sender name & contact number.
@@ -69,7 +69,7 @@ ______________________________________________________________
 #### **Feature Two**
 **Estimate Package Delivery Times:**
 ***Description*** - This feature for Estimate Package Delivery Times will ask the user to enter 2 postcode numbers, the senders postcode and the receivers postcode. Based on the 2 postcodes entered and the the postal zones they belong to, the application will display an estimated delivery time in number of days to the user. This feature has been based on the estimates from the Australia Post parcel post delivery estimator grid 2023. These can be viewed from this pdf:
-[Australia Post Parcel Delivery Estimates Grid 2023](./docs/AusPost%20Transit%20Grid%20Delivery%20Estimator%20August%202023%20update.pdf)
+[Australia Post Transit Grid Delivery Estimator 2023 - Page 2 Parcel Post](https://auspost.com.au/content/dam/auspost_corp/media/documents/domestic-parcels-delivery-estimator.pdf)
 
 Feature Two Image:
 
@@ -125,6 +125,23 @@ Trello board - testing phase:
 Trello board - completed:
 
 
+#### Application Feature Ticket Tasks :
+Please see images for the tasks in each feature ticket.
+Feature One:
+
+![Feature One](./docs/Feature%20one%20ticket%20tasks.png)
+
+Feature Two:
+
+![Feature Two](./docs/Feature%20two%20ticket%20tasks.png)
+
+Feature Three:
+
+![Feature Three](./docs/Feature%20Three%20ticket%20tasks.png)
+
+Feature Four:
+
+![Feature Four](./docs/Feature%20Four%20ticket%20tasks.png)
 
 #### Code Styling Guide :
 In coding the application using the Python language and using Visual Studio Code as the IDE. The Python style guide adhered to is 'PEP 8 – Style Guide for Python Code'.

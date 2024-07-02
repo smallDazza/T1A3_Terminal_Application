@@ -1,4 +1,4 @@
-
+# Feature 4
 import json
 import os
 
@@ -20,17 +20,15 @@ def del_receipt():
     delivery_cost = ticket["Delivery Cost"]
     ticket_number = ticket["Delivery Ticket Number"]
 
-    message = f""" 
-    Here is ticket number {ticket_number}, delivery details:\n
-    \tSenders Name: {senders_name}\n
-    \tSenders Contact Number: {senders_contact}\n
-    \tSenders Postcode: {senders_postcode}\n
-    \tReceivers Name: {receivers_name}\n
-    \tReceivers Address: {receivers_address}\n
-    \tReceivers Postcode: {receivers_postcode}\n
-    \tPackage Calculated Weight: {package_weight}\n
-    \tPackage Delivery Cost: {delivery_cost}\n 
-    """
+    message = f"Here is ticket number {ticket_number}. Delivery details:\n"
+    f"\tSenders Name: {senders_name}\n"
+    f"\tSenders Contact Number: {senders_contact}\n"
+    f"\tSenders Postcode: {senders_postcode}\n"
+    f"\tReceivers Name: {receivers_name}\n"
+    f"\tReceivers Address: {receivers_address}\n"
+    f"\tReceivers Postcode: {receivers_postcode}\n"
+    f"\tPackage Calculated Weight: {package_weight}\n"
+    f"\tPackage Delivery Cost: {delivery_cost:.2f}\n" 
     print(message)
 
     while True:

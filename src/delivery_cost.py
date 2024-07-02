@@ -1,3 +1,4 @@
+# Feature One 
 
 import random
 import json
@@ -69,19 +70,17 @@ def package_cost():
     
     delivery_job ["Delivery Cost"] = delivery_cost
 
-    message = f""" 
-    Here are your package delivery details based on your entries:\n
-    \tSenders Name: {sender_name}\n
-    \tSenders Contact Number: {sender_contact}\n
-    \tSenders Postcode: {senders_list[0]}\n
-    \tReceivers Name: {receiver_name}\n
-    \tReceivers Address: {receiver_address}\n
-    \tReceivers Postcode: {receivers_list[0]}\n
-    \tPackage Calculated Weight: {package_weight}\n
-    \tPackage Delivery Cost: {delivery_cost}\n 
-    """
+    message = f"Here are your package delivery details based on your entries:\n"
+    f"\tSenders Name: {sender_name}\n"
+    F"\tSenders Contact Number: {sender_contact}\n"
+    f"\tSenders Postcode: {senders_list[0]}\n"
+    f"\tReceivers Name: {receiver_name}\n"
+    f"\tReceivers Address: {receiver_address}\n"
+    f"\tReceivers Postcode: {receivers_list[0]}\n"
+    f"\tPackage Calculated Weight: {package_weight}\n"
+    f"\tPackage Delivery Cost: {delivery_cost:.2f}\n"
     print(message)
-
+    # Feature 2
     while True:
         booking = input("Would you like to proceed and book this package delivery ?"+ 
                         "(Y for yes or N for no): ").upper()

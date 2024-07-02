@@ -1,11 +1,8 @@
-# post zone charges list is globally defined
-# this way ,if in the future if a module is added for 'changing delivery times' = it can be accessed.
+# Delivery_daytimes list is globally defined.
+# This way ,if in the future if a module is added for 'changing delivery times' = it can be accessed.
 # Delivery times based on Aust Parcel Post Delivery Estimator 2023.pdf
 # To be able to match the postal_zones.py file a number of areas have been combined from above estimator pdf:
-# Canberra == N2
-# Far North QLD remote == Q4
-# Tas Remote == T1
-# Alice Springs + NT Other == NT1
+# Canberra == N2, Far North QLD remote == Q4, Tas Remote == T1, Alice Springs + NT Other == NT1
 # Column N1,N2,V1,V2,Q1,Q2,Q3,Q4,S1,S2,NT1,W1,W2,W3,T1
 
 
@@ -27,7 +24,7 @@ delivery_daytimes = [
     ['3-5', '4-7', '2-4', '3-5',' 4-6', '5-7', '6-9', '6-10', '4-6', '4-6',	'7-9(Darwin)5-15(Other Areas)',	'6-8', '8-10', '10-12',	'2-3']          #T1    
 ]
 
-# This function will return the string of 'Estimated Delivery time in number of days', by the zones returned from the post_zone function (postal_zones.py file).
+# This function will return the string from delivery_daytimes list by the zones returned from the post_zone function (postal_zones.py file).
 
 
 def del_time(zone_from, zone_to):

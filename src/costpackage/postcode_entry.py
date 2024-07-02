@@ -1,4 +1,8 @@
 
+# This send-code function sneds the inputed postcode to the post_zone function (which returns a numeric zone code)
+# If the code returned == -1 , the postcodes is not valid, so asks to input a new postcode.
+# Keeps looping until a valid postcode returns and breaks.
+
 from costpackage import post_zone
 
 
