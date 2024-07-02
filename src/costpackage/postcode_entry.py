@@ -12,7 +12,11 @@ def send_code(postcode):
         if zone == -1:
             print("That postcode does not exist or cannot be delivered by Australia Post."+ 
                   "Please try again.")
-            new_postcode = int(input("Please enter a new postcode: "))
+            try:
+                new_postcode = int(input("Please enter a new postcode: "))
+            except ValueError:
+                print("ValueError. Only numbers can be entered for postcodes.")
+                continue
             postcode = new_postcode
         else:
             break

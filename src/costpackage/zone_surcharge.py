@@ -1,10 +1,10 @@
-# post zone charges list is globally defined
+# Zone charges list is globally defined
 # this way ,if in the future if a module is added for 'changing freight zone rates' = it can be accessed.
 # Freight surcharge rates for every 1kg over 5kg of package weight = From Australia Post Parcel Charges 2024 pdf.
 # Not using zone areas NF,W4 or AAT 
 # Column N1,N2,V1,V2,Q1,Q2,Q3,Q4,S1,S2,NT1,W1,W2,W3,T1
 
-post_zone_charges = [
+zone_charges = [
     [0.20, 1.90, 1.70, 2.40, 1.70, 2.95, 4.50, 4.95, 2.30, 4.00, 8.40, 4.65, 8.25, 8.45, 3.65],         #N1 row
     [1.90, 1.90, 2.35, 2.55, 2.75, 3.50, 4.95, 5.40, 3.05, 4.85, 8.45, 7.40, 8.90, 9.15, 5.35],         #N2 row
     [1.70, 2.40, 0.20, 1.90, 2.30, 4.35, 4.95, 5.60, 1.70, 2.85, 8.40, 4.65, 7.70, 8.45, 2.35],         #V1 row
@@ -26,5 +26,5 @@ post_zone_charges = [
 
 
 def zone_charge(zone_from, zone_to):
-    return post_zone_charges[zone_from][zone_to]
+    return zone_charges[zone_from][zone_to]
  

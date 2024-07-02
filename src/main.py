@@ -33,21 +33,24 @@ def main_menu():
         print("\t2 - ⏱️  Estimate Package Delivery Times.\n")
         print("\t3 - 🧾 Save a Delivery Receipt.\n")
         print("\t4 - 👋 Exit Application.\n")
-        choice = int(input("Please type the number for your option selection: "))
+        try:
+            choice = int(input("Please type the number for your option selection: "))
         
-        if choice == 1:
-            package_cost()
+            if choice == 1:
+                package_cost()
             
-        elif choice == 2:
-            del_estimate()
+            elif choice == 2:
+                del_estimate()
             
-        elif choice == 3:
-            del_receipt()
+            elif choice == 3:
+                del_receipt()
             
-        elif choice == 4:
-            return
-        else:
-            print("This is invalid ⚠️. Please enter a number from 1 to 4.")          
+            elif choice == 4:
+                return
+            else:
+                print("This is invalid ⚠️. Please enter a number from 1 to 4.")  
+        except ValueError:
+            print("Value Error. Only the numbers listed can be entered.")        
     
 
 if __name__ == "__main__":

@@ -12,8 +12,14 @@ def package_cost():
     delivery_job ["Senders Name"] = sender_name
     sender_contact = input("Please enter the senders contact number: ")
     delivery_job ["Senders Contact"] = sender_contact
-    
-    postcode_send = int(input("Please enter the postcode sending the package from: "))
+    while True:
+        try:
+            postcode_send = int(input("Please enter the postcode sending the package from: "))
+        except ValueError:
+            print("ValueError. Only numbers can be entered for postcodes.")
+            continue
+        break
+
     senders_list = send_code(postcode_send)
     
     delivery_job ["Sender Postcode"] = senders_list[0]
@@ -22,20 +28,38 @@ def package_cost():
     delivery_job ["Receiver Name"] = receiver_name
     receiver_address = input("Please enter the receivers street address:  ")
     delivery_job ["Receiver Address"] = receiver_address
-    
-    postcode_rece = int(input("Please enter the receivers postcode: "))
+    while True:
+        try:
+            postcode_rece = int(input("Please enter the receivers postcode: "))
+        except ValueError:
+            print("ValueError. Only numbers can be entered for postcodes.")
+            continue
+        break
+
     receivers_list = send_code(postcode_rece)
     
     delivery_job ["Receiver Postcode"] = receivers_list[0]
-
-    length = int(input("Please enter the package Length in centimetres is: "))
-    width = int(input("Please enter the package Width in centimetres is: "))
-    height = int(input("Please enter the package Height in centimetres is: "))
+    while True:
+        try:
+            print("Measurements of your package.")
+            length = int(input("Please enter the package Length in centimetres: "))
+            width = int(input("Please enter the package Width in centimetres: "))
+            height = int(input("Please enter the package Height in centimetres: "))
+        except ValueError:
+            print("ValueError. Only numbers can be used for measurements."+
+                  "Please start all your measurements again.")
+            continue
+        while True:
+            try:
+                act_weight = int(input("Please enter the actual weight of the package."+
+                           "Weight in kilograms is: "))
+            except ValueError:
+                print("ValueError. Only numbers can be used for weight in kilograms.")
+                continue
+            break
+        break
 
     cub_weight = cubic_weight(length, width, height)
-
-    act_weight = int(input("Please enter the actual weight of the package."+
-                           "Weight in kilograms is: "))
 
     if length > 105 or width >105 or height > 105:
         print("Apologies but a dimension was larger than 105cm."+
@@ -70,15 +94,16 @@ def package_cost():
     
     delivery_job ["Delivery Cost"] = delivery_cost
 
-    message = f"Here are your package delivery details based on your entries:\n"
-    f"\tSenders Name: {sender_name}\n"
-    F"\tSenders Contact Number: {sender_contact}\n"
-    f"\tSenders Postcode: {senders_list[0]}\n"
-    f"\tReceivers Name: {receiver_name}\n"
-    f"\tReceivers Address: {receiver_address}\n"
-    f"\tReceivers Postcode: {receivers_list[0]}\n"
-    f"\tPackage Calculated Weight: {package_weight}\n"
-    f"\tPackage Delivery Cost: {delivery_cost:.2f}\n"
+    message = f"""Here are your package delivery details based on your entries:\n
+    \tSenders Name: {sender_name}\n
+    \tSenders Contact Number: {sender_contact}\n
+    \tSenders Postcode: {senders_list[0]}\n
+    \tReceivers Name: {receiver_name}\n
+    \tReceivers Address: {receiver_address}\n
+    \tReceivers Postcode: {receivers_list[0]}\n
+    \tPackage Calculated Weight: {package_weight}\n
+    \tPackage Delivery Cost: {delivery_cost:.2f}\n
+    """
     print(message)
     # Feature 2
     while True:
