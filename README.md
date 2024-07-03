@@ -37,7 +37,6 @@ The user inputs are:
 
 From the postcodes, dimensions and weight inputs a package delivery cost will be calculated.
 These will all be displayed to the user, who can choose to book the delivery job or not.
-If user chooses to book the delivery job, a delvery ticket number will be displayed for their future reference.
 
 Feature One Image:
 
@@ -61,35 +60,48 @@ Australia Post DO NOT accept packages based on 3 values:
 3. A maximum cubic dimension of 0.25 cubic metres.
 If any one of these are entered by user or calculated, a warning will display advising the user to contact Aust Post for further instructions and return them to the main menu.
 
-Lastly the user is asked if they would like to book this delivery job by a 'Y or N' response. If 'N' the application will return to the main menu. If 'Y' a random number will be generated, this will be assigned as the job ticket number, added to the delivery_job dictionary, then written to a json file and saved as the ticket number in the delivery_jobs folder. Here is an example: 
+#### **Feature Two**
+**Save Delivery Job Details As A json File**
+**Description** - After the feature one displays, the user is asked if they would like to book this delivery job by a 'Y or N' response. If user chooses to book the delivery job, a delvery ticket number will be displayed for their future reference and all the details saved as a json file, named as the ticket number.
+
+Feature two Image:
 
 ![ticket number json file](./docs/json%20file%20saved.png)
-______________________________________________________________
 
-#### **Feature Two**
+**Logic** - For feature two, at the top of the delivery_cost file, it is importing 3 Python library modules:
+1. Random module using the randint function = to generate a random number.
+2. json module using the dump function = to write a json file.
+3. os module using the join function = to join the json file path components.
+ - If user enters a 'N' the application will return to the main menu. If 'Y' a random number will be generated, this will be assigned as the job ticket number, added to the delivery_job dictionary. Then the entire delivery_job dictionary will be written as a json file and saved as the ticket number in the delivery_jobs folder. 
+
+#### **Feature Three**
 **Estimate Package Delivery Times:**
 ***Description*** - This feature for Estimate Package Delivery Times will ask the user to enter 2 postcode numbers, the senders postcode and the receivers postcode. Based on the 2 postcodes entered and the the postal zones they belong to, the application will display an estimated delivery time in number of days to the user. This feature has been based on the estimates from the Australia Post parcel post delivery estimator grid 2023. These can be viewed from this pdf:
 [Australia Post Transit Grid Delivery Estimator 2023 - Page 2 Parcel Post](https://auspost.com.au/content/dam/auspost_corp/media/documents/domestic-parcels-delivery-estimator.pdf)
 
-Feature Two Image:
+Feature Three Image:
 
-![feature Two](./docs/Feature%20Two%20image.png)
+![feature Three](./docs/Feature%20Two%20image.png)
 
-***Logic*** - In the delivery_estimate.py file, is the del_estimate function. From both the costpackage & timepackage folders, the delivery_estimate file is importing the following functions and their uses:
+***Logic*** - 
+ - In the delivery_estimate.py file, is the del_estimate function. From both the costpackage & timepackage folders, the delivery_estimate file is importing the following functions and their uses:
  - send_code function from the postcode_entry.py file. This is re-used in exactly the same way a what it is in feature one.
  - del_time function from the delivery_times file. This function will return a specific delivery time in the number of days based on the postal zones the postal codes belong to.
 
 The sender and receiver postcodes inputed from the post_zone function will return the postal zones these postcodes belong to. Then these zones will be used on the delivery_daytimes list of delivery times (for the same zones), which return the exact estimated delivery times (row, column) between the 2 postal code zones according to the AusPost Transit Grid Delivery Estimator August 2023 update pdf.
 
-#### **Feature Three**
+#### **Feature Four**
 **Save A Delivery Receipt**
 ***Description:*** - This feature will find a delivery ticket number entered by the user, then display the delivery job details of this ticket and ask the user if thay would like to save a receipt of this delivery job. If 'No' = then returns to the main menu. If 'Yes', it will save all of the details displayed of this delivery job to a text file to the 'delivery_receipts' folder.
 
-Feature Three Image:
+Feature Four Image:
 
-![Feature Three](./docs/Feature%20Three%20image.png)
+![Feature Four](./docs/Feature%20Three%20image.png)
 
-***Logic*** - The delivery_receipt.py file will import the python json & os modules. The del_receipt function will ask for a ticket number, then search & find this numbered json file located in the delivery_jobs folder. The individual values of this json ticket number will be then saved into variables and displayed to the user.
+***Logic*** - The delivery_receipt.py file will import 2 Python library modules:
+1. json module using the load function = to read a json file.
+2. os module using the join & makedirs functions = to join the txt file path components & check the folder location exists.
+The del_receipt function will ask for a ticket number, then search & find this numbered json file located in the delivery_jobs folder. The individual values of this json ticket number will be then saved into variables and displayed to the user.
 
 The user will be asked to save a delivery receipt or not. If No = returns to main menu. If Yes = saves all the string variables to a text file located in the delivery_receipts folder.Here is a example:
 

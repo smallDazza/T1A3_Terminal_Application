@@ -3,58 +3,44 @@
 import random
 import json
 import os
-from costpackage import cubic_weight, freight_rate, zone_charge, send_code
+from colorama import Fore, Style
+from costpackage import cubic_weight, freight_rate, zone_charge, send_code, rece_code
 
 
 def package_cost():
     delivery_job = {}
-    sender_name = input("Please enter the senders name: ")
+    sender_name = input(f"{Style.BRIGHT}{Fore.CYAN}Please enter the senders name: ")
     delivery_job ["Senders Name"] = sender_name
     sender_contact = input("Please enter the senders contact number: ")
     delivery_job ["Senders Contact"] = sender_contact
-    while True:
-        try:
-            postcode_send = int(input("Please enter the postcode sending the package from: "))
-        except ValueError:
-            print("ValueError. Only numbers can be entered for postcodes.")
-            continue
-        break
 
-    senders_list = send_code(postcode_send)
-    
+    senders_list = send_code()
     delivery_job ["Sender Postcode"] = senders_list[0]
 
-    receiver_name = input("Please enter the receivers name: ")
+    receiver_name = input(f"{Fore.CYAN}Please enter the receivers name: ")
     delivery_job ["Receiver Name"] = receiver_name
     receiver_address = input("Please enter the receivers street address:  ")
     delivery_job ["Receiver Address"] = receiver_address
-    while True:
-        try:
-            postcode_rece = int(input("Please enter the receivers postcode: "))
-        except ValueError:
-            print("ValueError. Only numbers can be entered for postcodes.")
-            continue
-        break
 
-    receivers_list = send_code(postcode_rece)
-    
+    receivers_list = rece_code()
     delivery_job ["Receiver Postcode"] = receivers_list[0]
+
     while True:
         try:
-            print("Measurements of your package.")
+            print(f"{Fore.CYAN}Measurements of your package.")
             length = int(input("Please enter the package Length in centimetres: "))
             width = int(input("Please enter the package Width in centimetres: "))
             height = int(input("Please enter the package Height in centimetres: "))
         except ValueError:
-            print("ValueError. Only numbers can be used for measurements."+
-                  "Please start all your measurements again.")
+            print(f"{Style.BRIGHT}{Fore.RED}ValueError. Only numbers can be used for measurements."+
+                  f"Please start all your measurements again.{Fore.RESET}")
             continue
         while True:
             try:
-                act_weight = int(input("Please enter the actual weight of the package."+
+                act_weight = int(input(f"{Fore.CYAN}Please enter the actual weight of the package."+
                            "Weight in kilograms is: "))
             except ValueError:
-                print("ValueError. Only numbers can be used for weight in kilograms.")
+                print(f"{Style.BRIGHT}{Fore.RED}ValueError. Only numbers can be used for weight in kilograms.{Fore.RESET}")
                 continue
             break
         break
@@ -62,7 +48,7 @@ def package_cost():
     cub_weight = cubic_weight(length, width, height)
 
     if length > 105 or width >105 or height > 105:
-        print("Apologies but a dimension was larger than 105cm."+
+        print(f"{Style.BRIGHT}{Fore.RED}Apologies but a dimension was larger than 105cm."+
               "This is to large for Australia Post to accept over the counter."+ 
               "Please contact for delivery options.")
         return
@@ -74,7 +60,7 @@ def package_cost():
     elif act_weight > 22:
         print("Apologies but the weight is greater than 22kg." + 
               "This is to large for Australia Post to accept over the counter." +
-              "Please contact for delivery options.")
+              f"Please contact for delivery options.{Fore.RESET}")
         return
     
     if cub_weight > act_weight:
@@ -94,6 +80,7 @@ def package_cost():
     
     delivery_job ["Delivery Cost"] = delivery_cost
 
+    f"{Style.BRIGHT}{Fore.CYAN}"
     message = f"""Here are your package delivery details based on your entries:\n
     \tSenders Name: {sender_name}\n
     \tSenders Contact Number: {sender_contact}\n
@@ -116,13 +103,13 @@ def package_cost():
             job_path = os.path.join(job_location, f"{job_number}.json") 
             with open(job_path, "w") as file:
                 json.dump(delivery_job, file, indent=4)
-            print(f"Your delivery has been booked. Your ticket number is: {job_number}."+ 
-                  "Please record this ticket number for future reference.")
+            print(f"Your delivery has been booked. Your ticket number is: {Fore.YELLOW}{job_number}.{Fore.RESET}"+ 
+                  f"{Fore.CYAN}Please record this ticket number for future reference.")
             break
         elif booking == "N":
             return
         else:
-            print("Invalid option. Please enter Y for Yes OR N for No")
+            print(f"{Style.BRIGHT}{Fore.RED}Invalid option. Please enter Y for Yes OR N for No.{Fore.RESET}")
 
     return
 

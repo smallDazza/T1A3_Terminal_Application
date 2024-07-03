@@ -1,10 +1,12 @@
 # Feature 4
+
 import json
 import os
+from colorama import Fore, Style
 
 
 def del_receipt():
-    ticket_num = input("Please enter your delivery ticket number: ")
+    ticket_num = input(f"{Style.BRIGHT}{Fore.BLUE}Please enter your delivery ticket number: ")
     ticket_path = f"delivery_jobs/{ticket_num}.json"
 
     with open(ticket_path, 'r') as file:
@@ -45,7 +47,7 @@ def del_receipt():
         elif choice == "N":
             return
         else:
-            print("Invalid option. Please enter Y for Yes OR N for No")
+            print(f"{Fore.RED}Invalid option. Please enter Y for Yes OR N for No.{Fore.RESET}")
 
     return
 
