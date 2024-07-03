@@ -1,0 +1,19 @@
+Here is ticket number 33240. Delivery details:
+
+    	Senders Name: Darren Small
+
+    	Senders Contact Number: 0449 760 334
+
+    	Senders Postcode: 2763
+
+    	Receivers Name: Mike Waters
+
+    	Receivers Address: 1554 testing st, Mandurah, WA
+
+    	Receivers Postcode: 6210
+
+    	Package Calculated Weight: 21
+
+    	Package Delivery Cost: 97.25
+
+    

@@ -3,6 +3,7 @@
 import random
 import json
 import os
+import math
 from colorama import Fore, Style
 from costpackage import cubic_weight, freight_rate, zone_charge, send_code, rece_code
 
@@ -28,16 +29,16 @@ def package_cost():
     while True:
         try:
             print(f"{Fore.CYAN}Measurements of your package.")
-            length = int(input("Please enter the package Length in centimetres: "))
-            width = int(input("Please enter the package Width in centimetres: "))
-            height = int(input("Please enter the package Height in centimetres: "))
+            length = float(input("Please enter the package Length in centimetres: "))
+            width = float(input("Please enter the package Width in centimetres: "))
+            height = float(input("Please enter the package Height in centimetres: "))
         except ValueError:
             print(f"{Style.BRIGHT}{Fore.RED}ValueError. Only numbers can be used for measurements."+
                   f"Please start all your measurements again.{Fore.RESET}")
             continue
         while True:
             try:
-                act_weight = int(input(f"{Fore.CYAN}Please enter the actual weight of the package."+
+                act_weight = float(input(f"{Fore.CYAN}Please enter the actual weight of the package."+
                            "Weight in kilograms is: "))
             except ValueError:
                 print(f"{Style.BRIGHT}{Fore.RED}ValueError. Only numbers can be used for weight in kilograms.{Fore.RESET}")
@@ -47,7 +48,7 @@ def package_cost():
 
     cub_weight = cubic_weight(length, width, height)
 
-    if length > 105 or width >105 or height > 105:
+    if length >105 or width >105 or height >105:
         print(f"{Style.BRIGHT}{Fore.RED}Apologies but a dimension was larger than 105cm."+
               "This is to large for Australia Post to accept over the counter."+ 
               "Please contact for delivery options.")
@@ -64,9 +65,9 @@ def package_cost():
         return
     
     if cub_weight > act_weight:
-        package_weight = cub_weight
+        package_weight = math.ceil(cub_weight)
     else:
-        package_weight = act_weight
+        package_weight = math.ceil(act_weight)
     
     freight_value = freight_rate(package_weight)
     delivery_job ["Package Calculated Weight"] = package_weight
@@ -104,7 +105,7 @@ def package_cost():
             with open(job_path, "w") as file:
                 json.dump(delivery_job, file, indent=4)
             print(f"Your delivery has been booked. Your ticket number is: {Fore.YELLOW}{job_number}.{Fore.RESET}"+ 
-                  f"{Fore.CYAN}Please record this ticket number for future reference.")
+                  f"{Fore.CYAN}Please record this ticket number for future reference.\n")
             break
         elif booking == "N":
             return
