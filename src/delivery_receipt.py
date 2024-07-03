@@ -6,11 +6,27 @@ from colorama import Fore, Style
 
 
 def del_receipt():
-    ticket_num = input(f"{Style.BRIGHT}{Fore.BLUE}Please enter your delivery ticket number: ")
-    ticket_path = f"delivery_jobs/{ticket_num}.json"
+    while True:
+        try:
+            ticket_num = input(f"{Style.BRIGHT}{Fore.BLUE}Please enter your delivery ticket number: ")
 
-    with open(ticket_path, 'r') as file:
-        ticket = json.load(file)
+            ticket_path = f"delivery_jobs/{ticket_num}.json"
+
+            with open(ticket_path, 'r') as file:
+                ticket = json.load(file)
+        except FileNotFoundError:
+            while True:
+                print(f"{Fore.RED}FileNotFoundError. This ticket number {ticket_num} cannot be found.")         
+                choice = input(f"Have you lost or forgotten your ticket number ? (Select Y for Yes, to return to Main Menu"+
+                           f" or N for No, to re-enter a valid ticket number.): ").upper()
+                if choice == "Y":
+                    return
+                elif choice == "N":
+                     break
+                else:
+                    print(f"Invalid option. Select Y or N.{Fore.RESET}")
+            continue
+        break
 
     senders_name = ticket["Senders Name"]
     senders_contact = ticket["Senders Contact"]
@@ -22,7 +38,7 @@ def del_receipt():
     delivery_cost = ticket["Delivery Cost"]
     ticket_number = ticket["Delivery Ticket Number"]
 
-    message = f"Here is ticket number {ticket_number}. Delivery details:\n"
+    message = f"{Fore.BLUE}Here is ticket number {ticket_number}. Delivery details:\n"
     f"\tSenders Name: {senders_name}\n"
     f"\tSenders Contact Number: {senders_contact}\n"
     f"\tSenders Postcode: {senders_postcode}\n"
