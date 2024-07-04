@@ -1,9 +1,10 @@
-# Feature One 
+# Feature One will calculate the delivery cost of a package based on Australian postcodes entered.
 
 import random
 import json
 import os
 import math
+import datetime
 from colorama import Fore, Style
 from costpackage import cubic_weight, freight_rate, zone_charge, send_code, rece_code
 
@@ -54,12 +55,12 @@ def package_cost():
               "Please contact for delivery options.")
         return
     elif cub_weight == -1:
-        print("Apologies the cubic weight is larger than 0.25 cubic metres."+
+        print(f"{Style.BRIGHT}{Fore.RED}Apologies the cubic weight is larger than 0.25 cubic metres."+
               "This is to large for Australia Post to accept over the counter."+ 
               "Please contact for delivery options.")
         return
     elif act_weight > 22:
-        print("Apologies but the weight is greater than 22kg." + 
+        print(f"{Style.BRIGHT}{Fore.RED}Apologies but the weight is greater than 22kg." + 
               "This is to large for Australia Post to accept over the counter." +
               f"Please contact for delivery options.{Fore.RESET}")
         return
@@ -76,29 +77,34 @@ def package_cost():
         charge = zone_charge(senders_list[1], receivers_list[1])
         delivery_cost = freight_value + (charge 
                                          * (package_weight-5))
+        delivery_cost = f"${delivery_cost:.2f}"
     else:
-        delivery_cost = freight_value
+        delivery_cost = f"${freight_value}"
     
     delivery_job ["Delivery Cost"] = delivery_cost
 
-    f"{Style.BRIGHT}{Fore.CYAN}"
-    message = f"""Here are your package delivery details based on your entries:\n
-    \tSenders Name: {sender_name}\n
-    \tSenders Contact Number: {sender_contact}\n
-    \tSenders Postcode: {senders_list[0]}\n
-    \tReceivers Name: {receiver_name}\n
-    \tReceivers Address: {receiver_address}\n
-    \tReceivers Postcode: {receivers_list[0]}\n
-    \tPackage Calculated Weight: {package_weight}\n
-    \tPackage Delivery Cost: {delivery_cost:.2f}\n
+    message = f"""{Style.BRIGHT}{Fore.CYAN}Here are your package delivery details based on your entries:\n
+    \t{Fore.CYAN}Senders Name: {Fore.YELLOW}{sender_name}\n
+    \t{Fore.CYAN}Senders Contact Number: {Fore.YELLOW}{sender_contact}\n
+    \t{Fore.CYAN}Senders Postcode: {Fore.YELLOW}{senders_list[0]}\n
+    \t{Fore.CYAN}Receivers Name: {Fore.YELLOW}{receiver_name}\n
+    \t{Fore.CYAN}Receivers Address: {Fore.YELLOW}{receiver_address}\n
+    \t{Fore.CYAN}Receivers Postcode: {Fore.YELLOW}{receivers_list[0]}\n
+    \t{Fore.CYAN}Package Calculated Weight: {Fore.YELLOW}{package_weight}\n
+    \t{Fore.CYAN}Package Delivery Cost: {Fore.YELLOW}{delivery_cost}{Fore.RESET}\n
     """
     print(message)
-    # Feature 2
+
+    # Feature 2 - If user wants to book the delivery job == writes all the delivery jod details from the delivery_job
+    # dictionary to a json file.
+
     while True:
-        booking = input("Would you like to proceed and book this package delivery ?"+ 
+        booking = input(f"{Fore.CYAN}Would you like to proceed and book this package delivery ?"+ 
                         "(Y for yes or N for no): ").upper()
         if booking == "Y":
             job_number = random.randint(10000,99999)
+            date_booked = datetime.date.today()
+            delivery_job ["Date Booked"] = date_booked.strftime("%d-%m-%Y")
             delivery_job ["Delivery Ticket Number"] = job_number
             job_location = "delivery_jobs"
             job_path = os.path.join(job_location, f"{job_number}.json") 

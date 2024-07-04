@@ -51,7 +51,7 @@ def main_menu():
             else:
                 print(f"{Fore.RED}This is invalid {emoji.emojize(':warning:')}. Please enter a number from 1 to 4.")  
         except ValueError:
-            print(f"Value Error. Only the numbers listed can be entered.{Style.RESET_ALL}")        
+            print(f"{Fore.RED}Value Error. Only the numbers listed can be entered.{Style.RESET_ALL}")        
     
 
 if __name__ == "__main__":
