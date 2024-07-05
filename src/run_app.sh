@@ -23,6 +23,8 @@ source ../venv/bin/activate
 # install the python libraries required.
 pip install -r requirements.txt
 
+# formats all .py files to conform to the PEP8 style guide.
+autopep8 --in-place --aggressive --aggressive *.py
 
 # run the application.
 python3 main.py
