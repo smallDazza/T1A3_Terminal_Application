@@ -60,8 +60,8 @@ def package_cost():
               "Please contact for delivery options.")
         return
     elif act_weight > 22:
-        print(f"{Style.BRIGHT}{Fore.RED}Apologies but the weight is greater than 22kg." + 
-              "This is to large for Australia Post to accept over the counter." +
+        print(f"{Style.BRIGHT}{Fore.RED}Apologies but the actual weight is greater than 22kg." + 
+              "This is to heavy for Australia Post to accept over the counter." +
               f"Please contact for delivery options.{Fore.RESET}")
         return
     

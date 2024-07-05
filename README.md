@@ -9,7 +9,7 @@ This Package Delivery Application is to provide users an estimated delivery cost
 
 ## Table Of Contents:
 
-- [Feature Outline](#application-feature-outline)
+- [Feature Outline & Logic](#application-feature-outline)
    - [Main Menu](#main-menu)
    - [Feature One](#feature-one)
    - [Feature Two](#feature-two)
@@ -26,12 +26,12 @@ This Package Delivery Application is to provide users an estimated delivery cost
 - [Help Documentation](#help-documentation)
 - [References](#references)
 
-## Application Feature Outline:
+## Application Feature Outline & Logic:
 
 ### **Main Menu**: 
 ***Description*** - When users run the application the first area to be displayed is the Main Menu. This is where users can choose one of the features to use. There are 4 options: Package Delivery Cost Calculator, Estimate Package Delivery Times, Save a Delivery Receipt and Exit Application.
 
-Logic - The main menu logic is located in the main.py file. This file is importing th following Python packages:
+***Logic*** - The main menu logic is located in the main.py file. This file is importing th following Python packages:
 1. emoji package. 
 2. colorama package.
 When users enter their choice number for the feature they want to use, it will then call the corresponding function imported from the file location. Entering the following numbers will call the following functions:
@@ -43,7 +43,7 @@ When users enter their choice number for the feature they want to use, it will t
 ### **Feature One**:
 **Package Delivery Cost Calculator:**
 ***Description*** - The Package Delivery Cost Calculator will estimate a delivery charge based on a number of user entered data inputs. This feature has been based on the current 2024 Australia Post Parcel Charges for the standard parcel delivery service only. These can be viewed from this pdf:
-[Australia Post Parcel Regular Service Charges 2024, Based on Pages 15,16 & 17 Rates](https://auspost.com.au/content/dam/auspost_corp/media/documents/post-guides/post-charges-guide-ms11.pdf)
+[Australia Post Parcel Regular Service Charges 2024, Based on Pages 14, 15, 16 & 17 Rates](https://auspost.com.au/content/dam/auspost_corp/media/documents/post-guides/post-charges-guide-ms11.pdf)
 
 The user inputs are:
  - Sender name & contact number.
@@ -84,9 +84,9 @@ If any one of these are entered by user or calculated, a warning will display ad
 
 ### **Feature Two**:
 **Save Delivery Job Details As A json File**
-**Description** - After the feature one displays delivery details, the user is asked if they would like to book this delivery job by a 'Y or N' response. If user chooses to book the delivery job, a delvery ticket number will be displayed for their future reference and all the details saved as a json file, named as the ticket number.
+***Description*** - After the feature one displays delivery details, the user is asked if they would like to book this delivery job by a 'Y or N' response. If user chooses to book the delivery job, a delvery ticket number will be displayed for their future reference and all the details saved as a json file, named as the ticket number.
 
-**Logic** - For feature two, at the top of the delivery_cost file, it is importing 4 Python packages:
+***Logic*** - For feature two, at the top of the delivery_cost file, it is importing 4 Python packages:
 1. Random module using the randint function = to generate a random number.
 2. json module using the dump function = to write a json file.
 3. os module using the join function = to join the json file path components.
@@ -106,7 +106,7 @@ If any one of these are entered by user or calculated, a warning will display ad
 The sender and receiver postcodes inputed from the post_zone function will return the postal zones these postcodes belong to. Then these zones will be used on the delivery_daytimes list of delivery times (for the same zones), which return the exact estimated delivery times (row, column) between the 2 postal code zones according to the AusPost Transit Grid Delivery Estimator August 2023 update pdf.
 
 ### **Feature Four**:
-**Save A Delivery Receipt**
+***Save A Delivery Receipt***
 ***Description:*** - This feature will find a delivery ticket number entered by the user, then display the delivery job details of this ticket and ask the user if thay would like to save a receipt of this delivery job. If 'No' = then returns to the main menu. If 'Yes', it will save all of the details displayed of this delivery job to a text file to the 'delivery_receipts' folder.
 
 ***Logic*** - The delivery_receipt.py file will import 2 Python packages:
@@ -139,9 +139,13 @@ Trello board - main setup and design done, start development:
 
 ![Trello board -start development](./docs/Trello%20start%20coding.png)
 
-Trello board - testing phase:
+Trello board - error handling and testing phase:
 
 ![Trello board - testing phase](./docs/Trello%20testing%20phase.png)
+
+Trello board - Issues found with error handling & testing, need to rework:
+
+![Trello board - rework](./docs/Trello%20-%20rework.png)
 
 Trello board - completed:
 
@@ -208,7 +212,7 @@ Displays in terminal:
 
 ![FileNotFoundError](./docs/Cannot%20find%20file%20error.png)
 
-#### User Input Incorrect String To Questions:
+#### User Input Incorrect String Answers To Questions:
 For the questions to users to decide on an outcome, if they answer / enter the incorrect string (other than Y or N as displayed), this is handled by 'else' statements:
 
 ![else code](./docs/Invalid%20option%203.png)
@@ -217,12 +221,6 @@ Displays in terminal:
 
 ![else warning](./docs/Invalid%20option%202.png)
 
-
-
-
-
-
-
 ## Application Testing :
 
 ### Testing Screenshots:
@@ -230,8 +228,26 @@ Displays in terminal:
 ## Help Documentation :
 
 ### Dependencies:
+This application requires Python3 to be installed to run.
 
-### Installation:
+The application uses following Python library packages:
+ - emoji==1.2.0
+ - colorama==0.4.6
+ - autopep8==2.3.1
+
+These libraries will be automatically installed when following the installation instructions.
+
+### Installation Instructions:
+To run this application follow these step by step instructions:
+
+1. In terminal, cd into src folder where the application source code is located.
+2. To have the execute permissions type in this command:
+
+` chmod +x ./run_app.sh `
+
+3. Then run the application file by this command:
+
+` ./run_app.sh `
 
 ### Using The Packing Delivery Application:
 

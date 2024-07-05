@@ -1,0 +1,21 @@
+Here is ticket number 99122. Delivery details:
+
+    	Senders Name: Clark Kent
+
+    	Senders Contact Number: 9788 5466
+
+    	Senders Postcode: 2763
+
+    	Receivers Name: The Goblin
+
+    	Receivers Address: 234A Batman street, Berowra, NSW
+
+    	Receivers Postcode: 2081
+
+    	Package Calculated Weight: 25
+
+    	Package Delivery Cost: $26.85
+
+    	Date Booked: 05-07-2024
+
+    
