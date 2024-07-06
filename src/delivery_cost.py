@@ -95,7 +95,7 @@ def package_cost():
         delivery_cost = f"${freight_value}"
 
     delivery_job["Delivery Cost"] = delivery_cost
-    
+
 # Display all the details from variables in a nice looking table format.
     message = f"\n{Style.BRIGHT}{Fore.CYAN}Here are your package delivery details based on your entries: {Fore.RESET}\n"
     table = PrettyTable()

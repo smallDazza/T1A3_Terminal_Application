@@ -56,7 +56,7 @@ def del_receipt():
     \tPackage Calculated Weight: {package_weight}\n
     \tPackage Delivery Cost: {delivery_cost}\n
     \tDate Booked: {date_booked}\n
-    """         
+    """
 # Display all the details from variables in a nice looking table format.
     heading = f"\n{Style.BRIGHT}{Fore.BLUE}Here is ticket number {ticket_number}. Delivery details:{Fore.RESET}\n"
     table = PrettyTable()
@@ -83,8 +83,8 @@ def del_receipt():
                      f"{Fore.YELLOW}{date_booked}{Fore.RESET}"],
                     [f"{Fore.BLUE}Delivery Ticket Number: {Fore.RESET}",
                      f"{Fore.YELLOW}{ticket_number}{Fore.RESET}"],])
-    print(heading)                      
-    print(table)                            
+    print(heading)
+    print(table)
 
     while True:
         choice = input(
@@ -96,7 +96,7 @@ def del_receipt():
             job_path = os.path.join(job_location, f"{ticket_number}.txt")
             with open(job_path, "w") as txt_file:
                 # writes the message variable to a txt file.
-                txt_file.write(table)
+                txt_file.write(file_data)
             print(
                 f"Your delivery receipt {ticket_number}.txt has been saved.\n")
             break
