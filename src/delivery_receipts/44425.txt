@@ -1,0 +1,21 @@
+Here is ticket number 44425. Delivery details:
+
+    	Senders Name: Superman
+
+    	Senders Contact Number: 0422 222 222
+
+    	Senders Postcode: 5437
+
+    	Receivers Name: Batman
+
+    	Receivers Address: 545 castle street, Liverpool, NSW
+
+    	Receivers Postcode: 2232
+
+    	Package Calculated Weight: 19
+
+    	Package Delivery Cost: $76.05
+
+    	Date Booked: 06-07-2024
+
+    

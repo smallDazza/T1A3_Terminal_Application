@@ -3,7 +3,7 @@
 
 ### GitHub Repository Link: [GitHub Repository](https://github.com/smallDazza/T1A3_Terminal_Application)
 
-### User Help: needing help instructions for this applications ?, go straight to:  [Help Documentation](#help-documentation)
+### User Help: needing help instructions for this application ?, go straight to:  [Help Documentation](#help-documentation)
 
 ## Application Scope:
 
@@ -76,7 +76,7 @@ All the user inputs of sender name & contact, receiver name & address, postcodes
 3. json module using the dump function = to write a json file.
 4. os module using the join function = to join the json file path components.
 5. Datetime module using the date.today function = to save the date of booking to dictionary.
- - If user enters a 'N' the application will return to the main menu. If 'Y' a random number will be generated, this will be assigned as the job ticket number. The date in a format of dd-mm-yyyy will be assigned to a date_booked variable. Both these will then be added to the delivery_job dictionary. Then the entire delivery_job dictionary will be written as a json file and saved as the ticket number in the delivery_jobs folder. 
+If user enters a 'N' the application will return to the main menu. If 'Y' a random number will be generated, this will be assigned as the job ticket number. The date in a format of dd-mm-yyyy will be assigned to a date_booked variable. Both these will then be added to the delivery_job dictionary. Then the entire delivery_job dictionary will be written as a json file and saved as the ticket number in the delivery_jobs folder. 
 
 ### **Feature Three**:
 **Estimate Package Delivery Times:**
@@ -139,6 +139,7 @@ Trello board - Issues found with error handling & testing, need to rework:
 
 Trello board - completed:
 
+![Trello done](./docs/Trello%20done.png)
 
 ### Application Feature Ticket Tasks:
 Please see images for the tasks in each feature ticket.
@@ -160,6 +161,7 @@ Feature Four:
 
 ### Code Styling Guide:
 In coding the application using the Python language and using Visual Studio Code as the IDE. The Python style guide adhered to is 'PEP 8 – Style Guide for Python Code'.
+The Python package 'autopep8 == 2.3.1', helps greatly for this style guide, as this when run from a script in the 'run_app.sh' file = will automaticaly format any .py files to pep8.
 This PEP 8 style guide can be found here:
 
 [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/)

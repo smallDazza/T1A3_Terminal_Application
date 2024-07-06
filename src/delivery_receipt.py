@@ -1,4 +1,4 @@
-# Feature 4 - this will find the user entered ticket number and display the details of booked job.
+# Feature 4 - this will find the user entered ticket number and display the details of the booked job.
 # If user inputs Y = will write the details from json file to a text file.
 
 import json
@@ -18,7 +18,8 @@ def del_receipt():
 
             with open(ticket_path, 'r') as file:
                 ticket = json.load(file)
-        # Error if cannot find ticket number, display message below.
+# if error = cannot find ticket number, then display message below & ask
+# user again how to proceed.
         except FileNotFoundError:
             while True:
                 print(
@@ -59,6 +60,7 @@ def del_receipt():
     \tDate Booked: {date_booked}\n
     """
 # Display all the details from variables in a nice looking table format.
+# Table.add_rows function had the data saved in a nested list.
     heading = f"\n{Style.BRIGHT}{Fore.BLUE}{emoji.emojize(':package:')} {emoji.emojize(':delivery_truck:')} Here is ticket number {ticket_number}. Delivery details:{Fore.RESET}\n"
     table = PrettyTable()
     table.field_names = [
@@ -92,11 +94,12 @@ def del_receipt():
             f"{Fore.BLUE}{emoji.emojize(':receipt:')} Would you like to proceed and save a delivery receipt ?" +
             "(Y for yes or N for no): ").upper()
         if choice == "Y":
+            # The text files are saved to the delivery_receipts folder.
             job_location = "delivery_receipts"
             os.makedirs(job_location, exist_ok=True)
             job_path = os.path.join(job_location, f"{ticket_number}.txt")
             with open(job_path, "w") as txt_file:
-                # writes the message variable to a txt file.
+                # writes the file_data (string) variable to a txt file.
                 txt_file.write(file_data)
             print(
                 f"\nYour delivery receipt {ticket_number}.txt has been saved.\n")

@@ -1,6 +1,8 @@
 
-# This send-code function sneds the inputed postcode to the post_zone function (which returns a numeric zone code)
-# If the code returned == -1 , the postcodes is not valid, so asks to input a new postcode.
+# This send_code & rece_code functions send the inputed postcode to the post_zone function (which returns a numeric zone code)
+# A while loop is used so:
+# If the code returned == -1 , the postcodes is not valid = asks to input a new postcode.
+# if a ValueError occurs = warns users and asks again.
 # Keeps looping until a valid postcode returns and breaks.
 import emoji
 from colorama import Fore, Style

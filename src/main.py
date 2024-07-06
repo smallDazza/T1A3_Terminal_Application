@@ -1,5 +1,5 @@
 # Main Menu Function
-#
+
 import emoji
 from colorama import Fore, Style
 from delivery_cost import package_cost
@@ -54,6 +54,8 @@ def main_menu():
 
             elif choice == 4:
                 return
+# This else & except = is to pick up any errors (user inputing the
+# incorrect format (numbers) required) and allow program to continue.
             else:
                 print(
                     f"{Fore.RED}This is invalid {emoji.emojize(':warning:')}. Please enter a number from 1 to 4.")

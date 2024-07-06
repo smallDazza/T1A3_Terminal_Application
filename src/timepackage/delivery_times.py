@@ -39,7 +39,7 @@ delivery_daytimes = [
         '7-9(Darwin)5-15(Other Areas)', '6-8', '8-10', '10-12', '2-3']  # T1
 ]
 
-# This function will return the string from delivery_daytimes list by the
+# This function will return the string from delivery_daytimes list by indexing the
 # zones returned from the post_zone function (postal_zones.py file).
 
 

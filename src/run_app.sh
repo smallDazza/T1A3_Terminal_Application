@@ -29,4 +29,8 @@ autopep8 --in-place --aggressive --aggressive *.py
 # run the application.
 python3 main.py
 
+# deactivate the venv environment
+deactivate
+
+
 

@@ -1,0 +1,21 @@
+Here is ticket number 85274. Delivery details:
+
+    	Senders Name: Billy Bob
+
+    	Senders Contact Number: 0411 111 111
+
+    	Senders Postcode: 3545
+
+    	Receivers Name: Lucy Bob
+
+    	Receivers Address: 45 silver street, hobart, TAS
+
+    	Receivers Postcode: 7000
+
+    	Package Calculated Weight: 20
+
+    	Package Delivery Cost: $70.85
+
+    	Date Booked: 06-07-2024
+
+    

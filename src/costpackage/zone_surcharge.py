@@ -1,4 +1,4 @@
-# Zone charges list is globally defined
+# Zone charges nested list is globally defined
 # this way ,if in the future if a module is added for 'changing freight zone rates' = it can be accessed.
 # Freight surcharge rates for every 1kg over 5kg of package weight = From Australia Post Parcel Charges 2024 pdf.
 # Not using zone areas NF,W4 or AAT
@@ -38,7 +38,7 @@ zone_charges = [
 ]
 
 # This function will return the surcharge rate for every 1kg above 5kg
-# Package weight, from the post_zone function (postal_zones.py file)
+# Package weight by indexing the zone number from the post_zone function (postal_zones.py file)
 
 
 def zone_charge(zone_from, zone_to):

@@ -1,4 +1,4 @@
-# Feature 3
+# Feature 3 - provide an estimated delivery time in number of days.
 import emoji
 from colorama import Fore, Style
 from costpackage import send_code, rece_code
@@ -6,6 +6,8 @@ from timepackage import del_time
 
 
 def del_estimate():
+    # calling the same 2 functions again to return the postcodes & zones in two lists.
+    # used these functions again to meet the DRY principles.
     senders_list = send_code()
 
     receivers_list = rece_code()
@@ -14,7 +16,8 @@ def del_estimate():
     zone_from = senders_list[1]
     postcode_to = receivers_list[0]
     zone_to = receivers_list[1]
-
+# calls the del_time function = using the 2 zone numbers to index on the
+# nested list to return the delivery time.
     delivery_time = del_time(zone_from, zone_to)
     for x in range(20):
         if x % 2 == 0:

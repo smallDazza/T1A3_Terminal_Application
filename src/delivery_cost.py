@@ -13,6 +13,7 @@ from costpackage import cubic_weight, freight_rate, zone_charge, send_code, rece
 
 
 def package_cost():
+    # this delivery_job dictionary will hold all the user input details.
     delivery_job = {}
     sender_name = input(
         f"{Style.BRIGHT}{Fore.CYAN}Please enter the {emoji.emojize(':person:')} senders name: ")
@@ -20,7 +21,8 @@ def package_cost():
     sender_contact = input(
         f"{Fore.CYAN}Please enter the senders {emoji.emojize(':telephone_receiver:')} contact number: ")
     delivery_job["Senders Contact"] = sender_contact
-
+# calling the send_code function to have user enter a valid senders
+# postcode. Then returns the postcode and zone number into a list.
     senders_list = send_code()
     delivery_job["Sender Postcode"] = senders_list[0]
 
@@ -30,10 +32,12 @@ def package_cost():
     receiver_address = input(
         f"{Fore.CYAN}Please enter the receivers {emoji.emojize(':houses:')}  street address, suburb & state:  ")
     delivery_job["Receiver Address"] = receiver_address
-
+# calling the rece_code function to have user enter a valid receivers
+# postcode. Then returns the postcode and zone number into a list.
     receivers_list = rece_code()
     delivery_job["Receiver Postcode"] = receivers_list[0]
-
+# these nested while loops are so if a error happens = will allow program to continue & ask the user
+# to re-enter the correct format inputs.
     while True:
         try:
             print(
@@ -62,9 +66,11 @@ def package_cost():
                 continue
             break
         break
-
+# calls the cubic_weight function to calculate the cubic weight of the
+# size of the package.
     cub_weight = cubic_weight(length, width, height)
-
+# these are the 3 values that Australia Post do not accept = return to
+# main menu.
     if length > 105 or width > 105 or height > 105:
         print(
             f"{Style.BRIGHT}{Fore.RED}Apologies but a dimension was larger than 105cm." +
@@ -83,12 +89,14 @@ def package_cost():
             "This is to heavy for Australia Post to accept over the counter." +
             f"Please contact for delivery options.{Fore.RESET}\n")
         return
-
+# which ever weight is used for package_weight = it is always rounded up
+# to the nearest whole number (math.ceil).
     if cub_weight > act_weight:
         package_weight = math.ceil(cub_weight)
     else:
         package_weight = math.ceil(act_weight)
-
+# call the feight_rate function to get a base rate cost depending what the
+# weight is.
     freight_value = freight_rate(package_weight)
     delivery_job["Package Calculated Weight"] = package_weight
 
@@ -127,8 +135,8 @@ def package_cost():
     print(message)
     print(table)
 
-    # Feature 2 - If user wants to book the delivery job == writes all the delivery jod details from the delivery_job
-    # dictionary to a json file.
+    # Feature 2 - If user wants to book the delivery job == writes all the delivery job details from the delivery_job
+    # dictionary to a json file saved in the delivery_jobs folder.
 
     while True:
         booking = input(

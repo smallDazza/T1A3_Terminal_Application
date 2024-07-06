@@ -1,7 +1,7 @@
 
 # Cubic Weight Function:
 # Aust Post calculates cubic weight for freight = dimensions in metres multiplied by 250kg:
-# The user parameters entered = cms. So converted to metres.
+# The user parameters entered = cms. So converted to metres by dividng by 100.
 # The cubic weight will be rounded up to next whole kg number using
 # math.ceil function from the python math module imported.
 
