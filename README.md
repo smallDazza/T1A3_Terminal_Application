@@ -33,9 +33,11 @@ This Package Delivery Application is to provide users an estimated delivery cost
 ### **Main Menu**: 
 ***Description*** - When users run the application the first area to be displayed is the Main Menu. This is where users can choose one of the features to use. There are 4 options: Package Delivery Cost Calculator, Estimate Package Delivery Times, Save a Delivery Receipt and Exit Application.
 
-***Logic*** - The main menu logic is located in the main.py file. This file is importing th following Python packages:
+***Logic*** - The main menu logic is located in the main.py file. This file is importing the following Python packages:
 1. emoji package. 
 2. colorama package.
+3. the 3 python files that have the 3 main feature functions.
+
 When users enter their choice number for the feature they want to use, it will then call the corresponding function imported from the file location. Entering the following numbers will call the following functions:
  - Number 1 --> will call the 'package_cost' function, located in the 'delivery_cost.py' file.
  - Number 2 --> will call the 'del_estimate' function, located in the 'delivery_estimate.py' file.
@@ -67,7 +69,7 @@ Based on the user dimensions inputed, a cubic weight will be calculated. The gre
 All the user inputs of sender name & contact, receiver name & address, postcodes, the package weight used and the delivery cost will be saved to a dictionary called delivery_job.
 
 ### **Feature Two**:
-**Save Delivery Job Details As A json File**
+**Save Delivery Job Details As A json File:**
 ***Description*** - After the feature one displays delivery details, the user is asked if they would like to book this delivery job by a 'Y or N' response. If user chooses to book the delivery job, a delvery ticket number will be displayed for their future reference and all the details saved as a json file, named as the ticket number.
 
 ***Logic*** - For feature two, at the top of the delivery_cost file, it is importing 4 Python packages for this feature:
@@ -80,21 +82,20 @@ If user enters a 'N' the application will return to the main menu. If 'Y' a rand
 
 ### **Feature Three**:
 **Estimate Package Delivery Times:**
-***Description*** - This feature for Estimate Package Delivery Times will ask the user to enter 2 postcode numbers, the senders postcode and the receivers postcode. Based on the 2 postcodes entered and the the postal zones they belong to, the application will display an estimated delivery time in number of days to the user. This feature has been based on the estimates from the Australia Post parcel post delivery estimator grid 2023. These can be viewed from this pdf:
+***Description*** - This feature for Estimate Package Delivery Times will ask the user to enter 2 postcode numbers, the senders postcode and the receivers postcode. Based on the 2 postcodes entered and the postal zones they belong to, the application will display an estimated delivery time in number of days to the user. This feature has been based on the estimates from the Australia Post parcel post delivery estimator grid 2023. These can be viewed from this pdf:
 [Australia Post Transit Grid Delivery Estimator 2023 - Page 2 Parcel Post](https://auspost.com.au/content/dam/auspost_corp/media/documents/domestic-parcels-delivery-estimator.pdf)
 
-***Logic*** - 
- - In the delivery_estimate.py file, is the del_estimate function. From both the costpackage & timepackage packages, the delivery_estimate file is importing the following functions and their uses:
- - emoji package.
- - colorama package.
- - send_code & rece_code functions from the postcode_entry.py file. This is re-used in exactly the same way a what it is in feature one.
- - del_time function from the delivery_times file. This function will return a specific delivery time in the number of days based on the postal zones the postal codes belong to.
+***Logic*** - In the delivery_estimate.py file, is the del_estimate function. From both the costpackage & timepackage packages, the delivery_estimate file is importing the following functions and their uses:
+1. emoji package.
+2. colorama package.
+3. send_code & rece_code functions from the postcode_entry.py file. This is re-used in exactly the same way a what it is in feature one.
+4. del_time function from the delivery_times file. This function will return a specific delivery time in the number of days based on the postal zones the postal codes belong to.
 
-The sender and receiver postcodes inputed from the post_zone function will return the postal zones these postcodes belong to. Then these zones will be used on the delivery_daytimes list of delivery times (for the same zones), which return the exact estimated delivery times (row, column) between the 2 postal code zones according to the AusPost Transit Grid Delivery Estimator August 2023 update pdf.
+The sender and receiver postcodes inputed from the post_zone function will return the postal zones these postcodes belong to. Then these zones will be used on the delivery_daytimes list of delivery times (for the same zones), which return the estimated delivery times (row, column) between the 2 postal code zones according to the AusPost Transit Grid Delivery Estimator August 2023 update pdf.
 
 ### **Feature Four**:
-***Save A Delivery Receipt***
-***Description:*** - This feature will find a delivery ticket number entered by the user, then display the delivery job details of this ticket and ask the user if thay would like to save a receipt of this delivery job. If 'No' = then returns to the main menu. If 'Yes', it will save all of the details displayed of this delivery job to a text file to the 'delivery_receipts' folder.
+***Save A Delivery Receipt:***
+***Description*** - This feature will find a delivery ticket number entered by the user, then display the delivery job details of this ticket and ask the user if thay would like to save a receipt of this delivery job. If 'No' = then returns to the main menu. If 'Yes', it will save all of the details displayed of this delivery job to a text file to the 'delivery_receipts' folder.
 
 ***Logic*** - The delivery_receipt.py file will import the following Python packages:
 1. emoji package. 
@@ -309,7 +310,7 @@ Entering the 'Y' input will:
  - Create a job delivery ticket number. This must be remembered for any future reference.
  - Save the details of the delivery into the system.
 
-Input 'Y' = create ticket number, book / save the details:
+Images = Input 'Y' --> create ticket number & book (save) the details:
 
 ![number 1.3](./docs/Feature%20One%20image3.png)
 
@@ -328,7 +329,7 @@ If any one of these are entered by user or calculated, a warning will display ad
 ![dimensions error3](./docs/enter%20dimensions%20errors%205.png)
 
 #### Estimate package Delivery Times:
-Selecting number 2 will start the feature of determining an estimated time a package will take to be delivered fron one postcode to another.
+Selecting number 2 will start the feature of determining an estimated time a package will take to be delivered from one postcode to another within Australia (excluding Norfolk Island).
 The application will ask all the questions required for the users inputs to estimate a time. These will be:
  - Postcode sending the package from.
  - Postcode the package is being delivered to.
@@ -342,15 +343,15 @@ Selecting number 3 will start the feature of saving a delivery receipt based off
  - The user will be asked to enter their ticket number.
  - The job delivery details will be displayed to the user.
  - They will be asked to proceed and save a delivery receipt.
- - A 'N' answer, cancels the process and returns to main menu.
- - A 'Y' answer, will save a receipt as a text file, which can then be printed.
+ - If a 'N' answer is entered, this cancels the process and returns to main menu.
+ - If a 'Y' answer is entered, this will save a receipt as a text file, which can then be printed.
 
 ![number 4](./docs/Feature%20Four%20image.png)
 
 If users enter a incorrect ticket number the following error will display and ask the question:
 'Have you lost or forgotten your ticket number ?' 
- - A 'Y' answer, cancels the process and returns to main menu.
- - A 'N' answer, will ask the user again for the ticket number.
+ - If a 'Y' answer is entered, this cancels the process and returns to main menu.
+ - If a 'N' answer is entered, this will re-ask the user again for the ticket number and proceed with the process mentioned above.
 
 ![number 4.1](./docs/Cannot%20find%20file%20error.png)
 
