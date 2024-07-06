@@ -6,6 +6,7 @@ import json
 import os
 import math
 import datetime
+import emoji
 from prettytable import PrettyTable
 from colorama import Fore, Style
 from costpackage import cubic_weight, freight_rate, zone_charge, send_code, rece_code
@@ -14,17 +15,17 @@ from costpackage import cubic_weight, freight_rate, zone_charge, send_code, rece
 def package_cost():
     delivery_job = {}
     sender_name = input(
-        f"{Style.BRIGHT}{Fore.CYAN}Please enter the senders name: ")
+        f"{Style.BRIGHT}{Fore.CYAN}Please enter the {emoji.emojize(':person:')} senders name: ")
     delivery_job["Senders Name"] = sender_name
-    sender_contact = input("Please enter the senders contact number: ")
+    sender_contact = input(f"{Fore.CYAN}Please enter the senders {emoji.emojize(':telephone_receiver:')} contact number: ")
     delivery_job["Senders Contact"] = sender_contact
 
     senders_list = send_code()
     delivery_job["Sender Postcode"] = senders_list[0]
 
-    receiver_name = input(f"{Fore.CYAN}Please enter the receivers name: ")
+    receiver_name = input(f"{Fore.CYAN}Please enter the {emoji.emojize(':person:')} receivers name: ")
     delivery_job["Receiver Name"] = receiver_name
-    receiver_address = input("Please enter the receivers street address:  ")
+    receiver_address = input(f"{Fore.CYAN}Please enter the receivers {emoji.emojize(':houses:')} street address:  ")
     delivery_job["Receiver Address"] = receiver_address
 
     receivers_list = rece_code()
@@ -32,7 +33,7 @@ def package_cost():
 
     while True:
         try:
-            print(f"\n{Fore.CYAN}Measurements of your package.")
+            print(f"\n{emoji.emojize(':straight_ruler:')}{Fore.CYAN} Measurements of your package {emoji.emojize(':package:')}.")
             length = float(
                 input("Please enter the package Length in centimetres: "))
             width = float(
@@ -48,7 +49,7 @@ def package_cost():
             try:
                 act_weight = float(
                     input(
-                        f"{Fore.CYAN}Please enter the actual weight of the package." +
+                        f"{Fore.CYAN}Please enter the {emoji.emojize(':balace_scale:')} actual weight of the package {emoji.emojize(':package:')} ." +
                         "Weight in kilograms is: "))
             except ValueError:
                 print(
@@ -97,7 +98,7 @@ def package_cost():
     delivery_job["Delivery Cost"] = delivery_cost
 
 # Display all the details from variables in a nice looking table format.
-    message = f"\n{Style.BRIGHT}{Fore.CYAN}Here are your package delivery details based on your entries: {Fore.RESET}\n"
+    message = f"\n{Style.BRIGHT}{Fore.CYAN}{emoji.emojize(':package:')} {emoji.emojize(':deliver_truck:')} Here are your package delivery details based on your entries: {Fore.RESET}\n"
     table = PrettyTable()
     table.field_names = [
         F"{Style.BRIGHT}{Fore.CYAN}Delivery Fields {Fore.RESET}",
@@ -138,7 +139,7 @@ def package_cost():
             with open(job_path, "w") as file:
                 json.dump(delivery_job, file, indent=4)
             print(
-                f"Your delivery has been booked. Your ticket number is: {Fore.YELLOW}{job_number}.{Fore.RESET}" +
+                f"{emoji.emojize(':package:')} {emoji.emojize(':delivery_truck:')} Your delivery has been booked. Your ticket number is: {Fore.YELLOW}{job_number}.{Fore.RESET}" +
                 f"{Fore.CYAN}Please record this ticket number for future reference.\n")
             break
         elif booking == "N":

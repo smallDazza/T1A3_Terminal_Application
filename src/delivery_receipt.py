@@ -3,6 +3,7 @@
 
 import json
 import os
+import emoji
 from prettytable import PrettyTable
 from colorama import Fore, Style
 
@@ -11,7 +12,7 @@ def del_receipt():
     while True:
         try:
             ticket_num = input(
-                f"{Style.BRIGHT}{Fore.BLUE}Please enter your delivery ticket number: ")
+                f"{Style.BRIGHT}{Fore.BLUE}{emoji.emojize(':ticket:')} {emoji.emojize(':delivery_truck:')} Please enter your delivery ticket number: ")
 
             ticket_path = f"delivery_jobs/{ticket_num}.json"
 
@@ -58,11 +59,11 @@ def del_receipt():
     \tDate Booked: {date_booked}\n
     """
 # Display all the details from variables in a nice looking table format.
-    heading = f"\n{Style.BRIGHT}{Fore.BLUE}Here is ticket number {ticket_number}. Delivery details:{Fore.RESET}\n"
+    heading = f"\n{Style.BRIGHT}{Fore.BLUE}{emoji.emojize(':package:')} {emoji.emojize(':delivery_truck:')} Here is ticket number {ticket_number}. Delivery details:{Fore.RESET}\n"
     table = PrettyTable()
     table.field_names = [
         F"{Style.BRIGHT}{Fore.BLUE}Delivery Fields {Fore.RESET}",
-        f"{Fore.CYAN}Your Details {Fore.RESET}"]
+        f"{Fore.BLUE}Your Details {Fore.RESET}"]
     table.add_rows([[f"{Fore.BLUE}Senders Name: {Fore.RESET}",
                      f"{Fore.YELLOW}{senders_name}{Fore.RESET}"],
                     [f"{Fore.BLUE}Senders Contact Number: {Fore.RESET}",
@@ -88,7 +89,7 @@ def del_receipt():
 
     while True:
         choice = input(
-            f"{Fore.BLUE}Would you like to proceed and save a delivery receipt ?" +
+            f"{Fore.BLUE}{emoji.emojize(':receipt:')} Would you like to proceed and save a delivery receipt ?" +
             "(Y for yes or N for no): ").upper()
         if choice == "Y":
             job_location = "delivery_receipts"
