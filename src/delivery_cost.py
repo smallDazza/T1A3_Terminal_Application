@@ -6,6 +6,7 @@ import json
 import os
 import math
 import datetime
+from prettytable import PrettyTable
 from colorama import Fore, Style
 from costpackage import cubic_weight, freight_rate, zone_charge, send_code, rece_code
 
@@ -31,7 +32,7 @@ def package_cost():
 
     while True:
         try:
-            print(f"{Fore.CYAN}Measurements of your package.")
+            print(f"\n{Fore.CYAN}Measurements of your package.")
             length = float(
                 input("Please enter the package Length in centimetres: "))
             width = float(
@@ -51,7 +52,7 @@ def package_cost():
                         "Weight in kilograms is: "))
             except ValueError:
                 print(
-                    f"{Style.BRIGHT}{Fore.RED}ValueError. Only numbers can be used for weight in kilograms.{Fore.RESET}")
+                    f"{Style.BRIGHT}{Fore.RED}ValueError. Only numbers can be used for weight in kilograms.{Fore.RESET}\n")
                 continue
             break
         break
@@ -62,19 +63,19 @@ def package_cost():
         print(
             f"{Style.BRIGHT}{Fore.RED}Apologies but a dimension was larger than 105cm." +
             "This is to large for Australia Post to accept over the counter." +
-            "Please contact for delivery options.")
+            "Please contact for delivery options.\n")
         return
     elif cub_weight == -1:
         print(
             f"{Style.BRIGHT}{Fore.RED}Apologies the cubic weight is larger than 0.25 cubic metres." +
             "This is to large for Australia Post to accept over the counter." +
-            "Please contact for delivery options.")
+            "Please contact for delivery options.\n")
         return
     elif act_weight > 22:
         print(
             f"{Style.BRIGHT}{Fore.RED}Apologies but the actual weight is greater than 22kg." +
             "This is to heavy for Australia Post to accept over the counter." +
-            f"Please contact for delivery options.{Fore.RESET}")
+            f"Please contact for delivery options.{Fore.RESET}\n")
         return
 
     if cub_weight > act_weight:
@@ -94,18 +95,31 @@ def package_cost():
         delivery_cost = f"${freight_value}"
 
     delivery_job["Delivery Cost"] = delivery_cost
-
-    message = f"""{Style.BRIGHT}{Fore.CYAN}Here are your package delivery details based on your entries:\n
-    \t{Fore.CYAN}Senders Name: {Fore.YELLOW}{sender_name}\n
-    \t{Fore.CYAN}Senders Contact Number: {Fore.YELLOW}{sender_contact}\n
-    \t{Fore.CYAN}Senders Postcode: {Fore.YELLOW}{senders_list[0]}\n
-    \t{Fore.CYAN}Receivers Name: {Fore.YELLOW}{receiver_name}\n
-    \t{Fore.CYAN}Receivers Address: {Fore.YELLOW}{receiver_address}\n
-    \t{Fore.CYAN}Receivers Postcode: {Fore.YELLOW}{receivers_list[0]}\n
-    \t{Fore.CYAN}Package Calculated Weight: {Fore.YELLOW}{package_weight}\n
-    \t{Fore.CYAN}Package Delivery Cost: {Fore.YELLOW}{delivery_cost}{Fore.RESET}\n
-    """
+    
+# Display all the details from variables in a nice looking table format.
+    message = f"\n{Style.BRIGHT}{Fore.CYAN}Here are your package delivery details based on your entries: {Fore.RESET}\n"
+    table = PrettyTable()
+    table.field_names = [
+        F"{Style.BRIGHT}{Fore.CYAN}Delivery Fields {Fore.RESET}",
+        f"{Fore.CYAN}Your Details {Fore.RESET}"]
+    table.add_rows([[f"{Fore.CYAN}Senders Name: {Fore.RESET}",
+                     f"{Fore.YELLOW}{sender_name}{Fore.RESET}"],
+                    [f"{Fore.CYAN}Senders Contact Number: {Fore.RESET}",
+                     f"{Fore.YELLOW}{sender_contact}{Fore.RESET}"],
+                    [f"{Fore.CYAN}Senders Postcode: {Fore.RESET}",
+                     f"{Fore.YELLOW}{senders_list[0]}{Fore.RESET}"],
+                    [f"{Fore.CYAN}Receivers Name: {Fore.RESET}",
+                     f"{Fore.YELLOW}{receiver_name}{Fore.RESET}"],
+                    [f"{Fore.CYAN}Receivers Address: {Fore.RESET}",
+                     f"{Fore.YELLOW}{receiver_address}{Fore.RESET}"],
+                    [f"{Fore.CYAN}Receivers Postcode: {Fore.RESET}",
+                     f"{Fore.YELLOW}{receivers_list[0]}{Fore.RESET}"],
+                    [f"{Fore.CYAN}Package Calculated Weight: {Fore.RESET}",
+                     f"{Fore.YELLOW}{package_weight}{Fore.RESET}"],
+                    [f"{Fore.CYAN}Package Delivery Cost: {Fore.RESET}",
+                     f"{Fore.YELLOW}{delivery_cost}{Fore.RESET}"]])
     print(message)
+    print(table)
 
     # Feature 2 - If user wants to book the delivery job == writes all the delivery jod details from the delivery_job
     # dictionary to a json file.
@@ -113,7 +127,7 @@ def package_cost():
     while True:
         booking = input(
             f"{Fore.CYAN}Would you like to proceed and book this package delivery ?" +
-            "(Y for yes or N for no): ").upper()
+            "( Y for yes or N for no ): ").upper()
         if booking == "Y":
             job_number = random.randint(10000, 99999)
             date_booked = datetime.date.today()

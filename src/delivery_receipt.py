@@ -3,6 +3,7 @@
 
 import json
 import os
+from prettytable import PrettyTable
 from colorama import Fore, Style
 
 
@@ -32,7 +33,7 @@ def del_receipt():
                     print(f"Invalid option. Select Y or N.{Fore.RESET}")
             continue
         break
-# gets all these key values from the json file and saves into variables
+# Gets all these key values from the json file and saves into variables
     senders_name = ticket["Senders Name"]
     senders_contact = ticket["Senders Contact"]
     senders_postcode = ticket["Sender Postcode"]
@@ -44,8 +45,8 @@ def del_receipt():
     date_booked = ticket["Date Booked"]
     ticket_number = ticket["Delivery Ticket Number"]
 
-    f"{Fore.BLUE}"
-    message = f"""Here is ticket number {ticket_number}. Delivery details:\n
+# This file data variable is the sting to write to the txt file.
+    file_data = f"""Here is ticket number {ticket_number}. Delivery details:\n
     \tSenders Name: {senders_name}\n
     \tSenders Contact Number: {senders_contact}\n
     \tSenders Postcode: {senders_postcode}\n
@@ -55,8 +56,35 @@ def del_receipt():
     \tPackage Calculated Weight: {package_weight}\n
     \tPackage Delivery Cost: {delivery_cost}\n
     \tDate Booked: {date_booked}\n
-    """
-    print(message)          # display all the details above from variables.
+    """         
+# Display all the details from variables in a nice looking table format.
+    heading = f"\n{Style.BRIGHT}{Fore.BLUE}Here is ticket number {ticket_number}. Delivery details:{Fore.RESET}\n"
+    table = PrettyTable()
+    table.field_names = [
+        F"{Style.BRIGHT}{Fore.BLUE}Delivery Fields {Fore.RESET}",
+        f"{Fore.CYAN}Your Details {Fore.RESET}"]
+    table.add_rows([[f"{Fore.BLUE}Senders Name: {Fore.RESET}",
+                     f"{Fore.YELLOW}{senders_name}{Fore.RESET}"],
+                    [f"{Fore.BLUE}Senders Contact Number: {Fore.RESET}",
+                     f"{Fore.YELLOW}{senders_contact}{Fore.RESET}"],
+                    [f"{Fore.BLUE}Senders Postcode: {Fore.RESET}",
+                     f"{Fore.YELLOW}{senders_postcode}{Fore.RESET}"],
+                    [f"{Fore.BLUE}Receivers Name: {Fore.RESET}",
+                     f"{Fore.YELLOW}{receivers_name}{Fore.RESET}"],
+                    [f"{Fore.BLUE}Receivers Address: {Fore.RESET}",
+                     f"{Fore.YELLOW}{receivers_address}{Fore.RESET}"],
+                    [f"{Fore.BLUE}Receivers Postcode: {Fore.RESET}",
+                     f"{Fore.YELLOW}{receivers_postcode}{Fore.RESET}"],
+                    [f"{Fore.BLUE}Package Calculated Weight: {Fore.RESET}",
+                     f"{Fore.YELLOW}{package_weight}{Fore.RESET}"],
+                    [f"{Fore.BLUE}Package Delivery Cost: {Fore.RESET}",
+                     f"{Fore.YELLOW}{delivery_cost}{Fore.RESET}"],
+                    [f"{Fore.BLUE}Date Booked: {Fore.RESET}",
+                     f"{Fore.YELLOW}{date_booked}{Fore.RESET}"],
+                    [f"{Fore.BLUE}Delivery Ticket Number: {Fore.RESET}",
+                     f"{Fore.YELLOW}{ticket_number}{Fore.RESET}"],])
+    print(heading)                      
+    print(table)                            
 
     while True:
         choice = input(
@@ -68,7 +96,7 @@ def del_receipt():
             job_path = os.path.join(job_location, f"{ticket_number}.txt")
             with open(job_path, "w") as txt_file:
                 # writes the message variable to a txt file.
-                txt_file.write(message)
+                txt_file.write(table)
             print(
                 f"Your delivery receipt {ticket_number}.txt has been saved.\n")
             break

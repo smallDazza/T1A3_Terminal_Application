@@ -3,6 +3,8 @@
 
 ### GitHub Repository Link: [GitHub Repository](https://github.com/smallDazza/T1A3_Terminal_Application)
 
+### User Help: needing help instructions for this applications ?, go straight to:  [Help Documentation](#help-documentation)
+
 ## Application Scope:
 
 This Package Delivery Application is to provide users an estimated delivery cost and delivery time for any items they are wanting to send within Australia based on their inputs of the package dimensions and weight. Should the user decide to go ahead with the quoted delivery, the application will generate a job delivery ticket number. This ticket number can also be used by the user to save a delivery receipt with all the delivery job details for future reference.
@@ -235,12 +237,13 @@ Created a file called 'testing.py' and imported Pythons 'unittest' module. The f
 ## Help Documentation :
 
 ### Dependencies:
-This application requires Python3 to be installed to run.
+This application requires Python3 to be installed.
 
-The application uses following Python library packages:
+The application uses the following Python library packages:
  - emoji==1.2.0
  - colorama==0.4.6
  - autopep8==2.3.1
+ - prettytable==3.10.0
 
 These libraries will be automatically installed when following the installation instructions.
 
@@ -252,14 +255,33 @@ To run this application follow these step by step instructions:
 
 ` chmod +x ./run_app.sh `
 
-3. Then run the application file with this command:
+3. Then run the below bash script with this command:
 
 ` ./run_app.sh `
 
-### Using The Packing Delivery Application:
+4. This will start the Packing Delivery Application automatically.
+
+### Using The Packing Delivery Application.
+
+#### Main Menu:
+
 
 
 ## References:
+
+Post, A., 2024, Australia Post MS11 Post Charges Booklet as at 1 July 2024 [Online]
+Available at: https://auspost.com.au/content/dam/auspost_corp/media/documents/post-guides/post-charges-guide-ms11.pdf
+
+Post, A., 2023, AusPost Transit Grid Delivery Estimator August 2023 update [Online]
+Available at: https://auspost.com.au/content/dam/auspost_corp/media/documents/domestic-parcels-delivery-estimator.pdf
+
+Trello Board, 2024, T1A3 - Package Delivery App [Online]
+Available at: https://trello.com/b/7mEUfMFB/t1a3-package-delivery-app
+
+Silveira, O., 2022, A Beginner’s Guide to Unit Tests in Python. [Online]
+Available at: https://www.dataquest.io/blog/unit-tests-python/
+
+
 
 
 
