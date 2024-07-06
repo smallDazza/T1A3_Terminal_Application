@@ -99,7 +99,7 @@ def del_receipt():
                 # writes the message variable to a txt file.
                 txt_file.write(file_data)
             print(
-                f"Your delivery receipt {ticket_number}.txt has been saved.\n")
+                f"\nYour delivery receipt {ticket_number}.txt has been saved.\n")
             break
         elif choice == "N":
             return

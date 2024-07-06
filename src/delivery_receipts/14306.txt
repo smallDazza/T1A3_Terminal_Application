@@ -1,0 +1,21 @@
+Here is ticket number 14306. Delivery details:
+
+    	Senders Name: Darren Small
+
+    	Senders Contact Number: 0400 000 000
+
+    	Senders Postcode: 2763
+
+    	Receivers Name: Peter Parker
+
+    	Receivers Address: 1234A spiderweb ave, Mandurah, WA
+
+    	Receivers Postcode: 6210
+
+    	Package Calculated Weight: 20
+
+    	Package Delivery Cost: $92.60
+
+    	Date Booked: 06-07-2024
+
+    

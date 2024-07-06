@@ -28,7 +28,7 @@ def package_cost():
         f"{Fore.CYAN}Please enter the {emoji.emojize(':person:')} receivers name: ")
     delivery_job["Receiver Name"] = receiver_name
     receiver_address = input(
-        f"{Fore.CYAN}Please enter the receivers {emoji.emojize(':houses:')}  street address:  ")
+        f"{Fore.CYAN}Please enter the receivers {emoji.emojize(':houses:')}  street address, suburb & state:  ")
     delivery_job["Receiver Address"] = receiver_address
 
     receivers_list = rece_code()
@@ -53,7 +53,8 @@ def package_cost():
             try:
                 act_weight = float(
                     input(
-                        f"{Fore.CYAN}Please enter the {emoji.emojize(':balance_scale:')} actual weight of the package {emoji.emojize(':package:')} ." +
+                        f"{Fore.CYAN}Please enter the {emoji.emojize(':balance_scale:')}" +
+                        f"  actual weight of the package {emoji.emojize(':package:')} ." +
                         "Weight in kilograms is: "))
             except ValueError:
                 print(
@@ -132,7 +133,7 @@ def package_cost():
     while True:
         booking = input(
             f"{Fore.CYAN}Would you like to proceed and book this package delivery ?" +
-            "( Y for yes or N for no ): ").upper()
+            " ( Y for yes or N for no ): ").upper()
         if booking == "Y":
             job_number = random.randint(10000, 99999)
             date_booked = datetime.date.today()
@@ -143,7 +144,7 @@ def package_cost():
             with open(job_path, "w") as file:
                 json.dump(delivery_job, file, indent=4)
             print(
-                f"{emoji.emojize(':package:')} {emoji.emojize(':delivery_truck:')} Your delivery has been booked. Your ticket number is: {Fore.YELLOW}{job_number}.{Fore.RESET}" +
+                f"\nYour delivery has been booked {emoji.emojize(':package:')} {emoji.emojize(':delivery_truck:')} . Your ticket number is: {Fore.YELLOW}{job_number}.{Fore.RESET}" +
                 f"{Fore.CYAN}Please record this ticket number for future reference.\n")
             break
         elif booking == "N":
