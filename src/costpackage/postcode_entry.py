@@ -2,6 +2,7 @@
 # This send-code function sneds the inputed postcode to the post_zone function (which returns a numeric zone code)
 # If the code returned == -1 , the postcodes is not valid, so asks to input a new postcode.
 # Keeps looping until a valid postcode returns and breaks.
+import emoji
 from colorama import Fore, Style
 from costpackage import post_zone
 
@@ -10,7 +11,7 @@ def send_code():
     while True:
         try:
             postcode = int(
-                input(f"{Fore.CYAN}Please enter the postcode sending the package from: "))
+                input(f"{Fore.CYAN}{emoji.emojize(':postbox:')} Please enter the postcode sending the package from: "))
         except ValueError:
             print(
                 f"{Style.BRIGHT}{Fore.RED}ValueError. Only numbers can be entered for postcodes.{Fore.RESET}")
@@ -30,7 +31,7 @@ def rece_code():
     while True:
         try:
             postcode = int(
-                input(f"{Fore.CYAN}Please enter the receivers postcode: "))
+                input(f"{Fore.CYAN}{emoji.emojize(':postbox:')} Please enter the receivers postcode: "))
         except ValueError:
             print(
                 f"{Style.BRIGHT}{Fore.RED}ValueError. Only numbers can be entered for postcodes.{Fore.RESET}")
