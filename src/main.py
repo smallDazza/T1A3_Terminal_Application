@@ -20,7 +20,7 @@ def main_menu():
     message = f"""{Fore.RED}Important To Note:\n
     This application is based on standard delivery costs & times from Australia Post.\n
     Application costings DO NOT include express services or packaging.\n
-    Items MUST be in their own packaging.\n{Fore.RESET}
+    Items dimensions larger than 105cm, 0.25 cubic size or weight heavier than 22kg, cannot be accepted.\n{Fore.RESET}
     """
     print(message)
     while True:

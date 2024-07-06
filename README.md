@@ -236,7 +236,20 @@ Created a file called 'testing.py' and imported Pythons 'unittest' module. The f
 
 ## Help Documentation :
 
-### Dependencies:
+### System Requirements:
+Recommendations are:
+Processor:
+ - Intel Core i5 or AMD Ryzen 5 equivalent or better.
+RAM:
+ - 8 GB or more.
+Storage:
+ - SSD with at least 50 GB of free space.
+Graphics Card:
+ - Dedicated GPU with hardware acceleration support for better performance in graphical applications and games.
+Ubuntu installed:
+The application was extensively tested using Ubuntu, so this is recommended for its use.
+
+### Application Dependencies:
 This application requires Python3 to be installed.
 
 The application uses the following Python library packages:
