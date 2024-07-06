@@ -106,7 +106,7 @@ The del_receipt function will ask for a ticket number, then search & find this n
 
 The user will be asked to save a delivery receipt or not. If No = returns to main menu. If Yes = saves all the string variables to a text file located in the delivery_receipts folder.
 
-## Package Delivery Application Design :
+## Package Delivery Application Design:
 
 ### Application Pseudocode:
 The application psuedocode has been designed in this pdf document:
@@ -211,7 +211,7 @@ Displays in terminal:
 
 ![else warning](./docs/Invalid%20option%202.png)
 
-## Application Testing :
+## Application Testing:
 
 ### Unit Testing Screenshots:
 Created a file called 'testing.py' and imported Pythons 'unittest' module. The following unit tests were done on modules in the costpackage & timepackage folders.
@@ -222,7 +222,7 @@ Created a file called 'testing.py' and imported Pythons 'unittest' module. The f
 ![post zone test](./docs/unittest%203.png)
 ![delivery time test](./docs/unittest%204.png)
 
-## Help Documentation :
+## Help Documentation:
 
 ### System Requirements:
 Recommendations are:
