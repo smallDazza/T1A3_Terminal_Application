@@ -47,15 +47,6 @@ When users enter their choice number for the feature they want to use, it will t
 ***Description*** - The Package Delivery Cost Calculator will estimate a delivery charge based on a number of user entered data inputs. This feature has been based on the current 2024 Australia Post Parcel Charges for the standard parcel delivery service only. These can be viewed from this pdf:
 [Australia Post Parcel Regular Service Charges 2024, Based on Pages 14, 15, 16 & 17 Rates](https://auspost.com.au/content/dam/auspost_corp/media/documents/post-guides/post-charges-guide-ms11.pdf)
 
-The user inputs are:
- - Sender name & contact number.
- - Sender postcode.
- - Receiver name & address.
- - Receiver postcode.
- - Package dimensions of length, width and height. Entered in centremetres.
- - Package weight. Entered in kilograms.
- - Entering Y or N for yes or no answers.
-
 From the postcodes, dimensions and weight inputs a package delivery cost will be calculated.
 These will all be displayed to the user, who can choose to book the delivery job or not.
 
@@ -65,8 +56,9 @@ These will all be displayed to the user, who can choose to book the delivery job
 3. Os package.
 4. Math package.
 5. Datetime package.
-6. Colorama package.
-7. The costpackage & importing the following functions and their uses:
+6. Prettytable package.
+7. Colorama package.
+8. The costpackage folder & importing the following functions and their uses:
  - send_code & rece_code from the postcode_entry.py file :
     - postcode_entry.py also imports post_zone from the postal_zones.py file = this uses the user postcodes entered to find & return a zone number the postcode belongs to.
     - send_code & rece_code functions handle if the postcodes entered by user are not valid. If so, asks the user to re-enter another postcode. Continues until a valid postcode entered. Then returns both valid postcode and zone number it belongs to, as a list format.
@@ -238,16 +230,21 @@ Created a file called 'testing.py' and imported Pythons 'unittest' module. The f
 
 ### System Requirements:
 Recommendations are:
+
 Processor:
  - Intel Core i5 or AMD Ryzen 5 equivalent or better.
+
 RAM:
  - 8 GB or more.
+
 Storage:
  - SSD with at least 50 GB of free space.
+
 Graphics Card:
  - Dedicated GPU with hardware acceleration support for better performance in graphical applications and games.
+
 Ubuntu installed:
-The application was extensively tested using Ubuntu, so this is recommended for its use.
+ - The application was extensively tested using Ubuntu, so this is recommended for its use.
 
 ### Application Dependencies:
 This application requires Python3 to be installed.
@@ -277,9 +274,58 @@ To run this application follow these step by step instructions:
 ### Using The Packing Delivery Application.
 
 #### Main Menu:
+The main menu will first display, with a welcome and important messages for the user to be aware of regarding the application.
 
+There are 4 options for the user to choose from:
 
+- Number 1 = Package Delivery Cost Calculator.
+- Number 2 = Estimate Package Delivery Times.
+- Number 3 = Save a Delivery Receipt.
+- Number 4 = Exit Application.
 
+Users must enter their choice from 1 - 4.
+
+An image of the main menu:
+
+![main menu](./docs/App%20Main%20Menu.png)
+
+#### Package Delivery Cost Calculator:
+Selecting number 1 will start the feature of calculating the cost of the users package to be delivered within Australia.
+The application will ask all the questions required for the users inputs to calculate a costing. These will be:
+ - Sender name & contact number.
+ - Sender postcode.
+ - Receiver name 
+ - Receiver street address, suburb & state.
+ - Receiver postcode.
+ - Package dimensions of length, width and height. Entered in centremetres.
+ - Package weight. Entered in kilograms.
+
+![number1](./docs/Feature%20One%20image.png)
+
+![number1.2](./docs/Feature%20One%20image2.png)
+
+The cost to deliver the package will then be displayed to the user.
+The user is then asked if they would like to 'book' the delivery job:
+Entering the 'N' input cancels the job and returns back to the main menu.
+Entering the 'Y' input will:
+ - Create a job delivery ticket number. This must be remembered for any future reference.
+ - Save the details of the delivery into the system.
+
+Input 'Y' = create ticket number, book / save the details:
+
+![number 1.3](./docs/Feature%20One%20image3.png)
+
+#### Estimate package Delivery Times:
+Selecting number 2 will start the feature of determining an estimated time a package will take to be delivered fron one postcode to another.
+The application will ask all the questions required for the users inputs to estimate a time. These will be:
+ - Postcode sending the package from.
+ - Postcode the package is being delivered to.
+
+The estimated delivery time will be displayed to the user in 'number of days'.
+
+![number 2](./docs/Feature%20Two%20image.png)
+
+#### Save a Delivery Receipt:
 ## References:
 
 Post, A., 2024, Australia Post MS11 Post Charges Booklet as at 1 July 2024 [Online]
