@@ -223,7 +223,14 @@ Displays in terminal:
 
 ## Application Testing :
 
-### Testing Screenshots:
+### Unit Testing Screenshots:
+Created a file called 'testing.py' and imported Pythons 'unittest' module. The following unit tests were done on modules in the costpackage & timepackage folders.
+3 tests were designed to Pass & 1 test designed to Fail:
+
+![cubic weight test](./docs/unittest%201.png)
+![zone charge test](./docs/unittest%202.png)
+![post zone test](./docs/unittest%203.png)
+![delivery time test](./docs/unittest%204.png)
 
 ## Help Documentation :
 
@@ -245,7 +252,7 @@ To run this application follow these step by step instructions:
 
 ` chmod +x ./run_app.sh `
 
-3. Then run the application file by this command:
+3. Then run the application file with this command:
 
 ` ./run_app.sh `
 
