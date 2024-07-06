@@ -17,15 +17,18 @@ def package_cost():
     sender_name = input(
         f"{Style.BRIGHT}{Fore.CYAN}Please enter the {emoji.emojize(':person:')} senders name: ")
     delivery_job["Senders Name"] = sender_name
-    sender_contact = input(f"{Fore.CYAN}Please enter the senders {emoji.emojize(':telephone_receiver:')} contact number: ")
+    sender_contact = input(
+        f"{Fore.CYAN}Please enter the senders {emoji.emojize(':telephone_receiver:')} contact number: ")
     delivery_job["Senders Contact"] = sender_contact
 
     senders_list = send_code()
     delivery_job["Sender Postcode"] = senders_list[0]
 
-    receiver_name = input(f"{Fore.CYAN}Please enter the {emoji.emojize(':person:')} receivers name: ")
+    receiver_name = input(
+        f"{Fore.CYAN}Please enter the {emoji.emojize(':person:')} receivers name: ")
     delivery_job["Receiver Name"] = receiver_name
-    receiver_address = input(f"{Fore.CYAN}Please enter the receivers {emoji.emojize(':houses:')} street address:  ")
+    receiver_address = input(
+        f"{Fore.CYAN}Please enter the receivers {emoji.emojize(':houses:')}  street address:  ")
     delivery_job["Receiver Address"] = receiver_address
 
     receivers_list = rece_code()
@@ -33,7 +36,8 @@ def package_cost():
 
     while True:
         try:
-            print(f"\n{emoji.emojize(':straight_ruler:')}{Fore.CYAN} Measurements of your package {emoji.emojize(':package:')}.")
+            print(
+                f"\n{emoji.emojize(':straight_ruler:')}{Fore.CYAN} Measurements of your package {emoji.emojize(':package:')}.")
             length = float(
                 input("Please enter the package Length in centimetres: "))
             width = float(
@@ -49,7 +53,7 @@ def package_cost():
             try:
                 act_weight = float(
                     input(
-                        f"{Fore.CYAN}Please enter the {emoji.emojize(':balace_scale:')} actual weight of the package {emoji.emojize(':package:')} ." +
+                        f"{Fore.CYAN}Please enter the {emoji.emojize(':balance_scale:')} actual weight of the package {emoji.emojize(':package:')} ." +
                         "Weight in kilograms is: "))
             except ValueError:
                 print(
@@ -98,7 +102,7 @@ def package_cost():
     delivery_job["Delivery Cost"] = delivery_cost
 
 # Display all the details from variables in a nice looking table format.
-    message = f"\n{Style.BRIGHT}{Fore.CYAN}{emoji.emojize(':package:')} {emoji.emojize(':deliver_truck:')} Here are your package delivery details based on your entries: {Fore.RESET}\n"
+    message = f"\n{Style.BRIGHT}{Fore.CYAN}{emoji.emojize(':package:')} {emoji.emojize(':delivery_truck:')} Here are your package delivery details based on your entries: {Fore.RESET}\n"
     table = PrettyTable()
     table.field_names = [
         F"{Style.BRIGHT}{Fore.CYAN}Delivery Fields {Fore.RESET}",

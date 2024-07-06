@@ -12,7 +12,7 @@ def del_receipt():
     while True:
         try:
             ticket_num = input(
-                f"{Style.BRIGHT}{Fore.BLUE}{emoji.emojize(':ticket:')} {emoji.emojize(':delivery_truck:')} Please enter your delivery ticket number: ")
+                f"{Style.BRIGHT}{Fore.BLUE}{emoji.emojize(':delivery_truck:')} {emoji.emojize(':ticket:')} Please enter your delivery ticket number: ")
 
             ticket_path = f"delivery_jobs/{ticket_num}.json"
 
