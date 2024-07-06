@@ -47,18 +47,15 @@ When users enter their choice number for the feature they want to use, it will t
 ***Description*** - The Package Delivery Cost Calculator will estimate a delivery charge based on a number of user entered data inputs. This feature has been based on the current 2024 Australia Post Parcel Charges for the standard parcel delivery service only. These can be viewed from this pdf:
 [Australia Post Parcel Regular Service Charges 2024, Based on Pages 14, 15, 16 & 17 Rates](https://auspost.com.au/content/dam/auspost_corp/media/documents/post-guides/post-charges-guide-ms11.pdf)
 
-From the postcodes, dimensions and weight inputs a package delivery cost will be calculated.
+From the postcodes, dimensions and weight inputs from users, a package delivery cost will be calculated.
 These will all be displayed to the user, who can choose to book the delivery job or not.
 
-***Logic*** - The 'delivery_cost.py' file is importing the following Python packages:
-1. Random package.
-2. Json package.
-3. Os package.
-4. Math package.
-5. Datetime package.
-6. Prettytable package.
-7. Colorama package.
-8. The costpackage folder & importing the following functions and their uses:
+***Logic*** - The 'delivery_cost.py' file for this feature is importing the following Python packages:
+1. emoji package
+2. Math package.
+3. Prettytable package.
+4. Colorama package.
+5. The costpackage folder & importing the following functions and their uses:
  - send_code & rece_code from the postcode_entry.py file :
     - postcode_entry.py also imports post_zone from the postal_zones.py file = this uses the user postcodes entered to find & return a zone number the postcode belongs to.
     - send_code & rece_code functions handle if the postcodes entered by user are not valid. If so, asks the user to re-enter another postcode. Continues until a valid postcode entered. Then returns both valid postcode and zone number it belongs to, as a list format.
@@ -69,22 +66,16 @@ These will all be displayed to the user, who can choose to book the delivery job
 Based on the user dimensions inputed, a cubic weight will be calculated. The greater of the two weights (weight entered or cubic weight), will be used as the package weight for the delivery cost. Their are 4 standard package weight rates upto 5kgs.If the package weight is above 5kg, then there is a extra surcharge rate for every extra 1kg (or part thereof) based on the two postcode zones.
 All the user inputs of sender name & contact, receiver name & address, postcodes, the package weight used and the delivery cost will be saved to a dictionary called delivery_job.
 
-NOTE:
-Australia Post DO NOT accept packages based on 3 values:
-1. A maximum package weight of 22kg.
-2. A maximum any dimension of 105cm.
-3. A maximum cubic dimension of 0.25 cubic metres.
-If any one of these are entered by user or calculated, a warning will display advising the user to contact Aust Post for further instructions and return them to the main menu.
-
 ### **Feature Two**:
 **Save Delivery Job Details As A json File**
 ***Description*** - After the feature one displays delivery details, the user is asked if they would like to book this delivery job by a 'Y or N' response. If user chooses to book the delivery job, a delvery ticket number will be displayed for their future reference and all the details saved as a json file, named as the ticket number.
 
-***Logic*** - For feature two, at the top of the delivery_cost file, it is importing 4 Python packages:
-1. Random module using the randint function = to generate a random number.
-2. json module using the dump function = to write a json file.
-3. os module using the join function = to join the json file path components.
-4. Datetime module using the date.today function = to save the date of booking to dictionary.
+***Logic*** - For feature two, at the top of the delivery_cost file, it is importing 4 Python packages for this feature:
+1. emoji package
+2. Random module using the randint function = to generate a random number.
+3. json module using the dump function = to write a json file.
+4. os module using the join function = to join the json file path components.
+5. Datetime module using the date.today function = to save the date of booking to dictionary.
  - If user enters a 'N' the application will return to the main menu. If 'Y' a random number will be generated, this will be assigned as the job ticket number. The date in a format of dd-mm-yyyy will be assigned to a date_booked variable. Both these will then be added to the delivery_job dictionary. Then the entire delivery_job dictionary will be written as a json file and saved as the ticket number in the delivery_jobs folder. 
 
 ### **Feature Three**:
@@ -94,6 +85,8 @@ If any one of these are entered by user or calculated, a warning will display ad
 
 ***Logic*** - 
  - In the delivery_estimate.py file, is the del_estimate function. From both the costpackage & timepackage packages, the delivery_estimate file is importing the following functions and their uses:
+ - emoji package.
+ - colorama package.
  - send_code & rece_code functions from the postcode_entry.py file. This is re-used in exactly the same way a what it is in feature one.
  - del_time function from the delivery_times file. This function will return a specific delivery time in the number of days based on the postal zones the postal codes belong to.
 
@@ -103,9 +96,12 @@ The sender and receiver postcodes inputed from the post_zone function will retur
 ***Save A Delivery Receipt***
 ***Description:*** - This feature will find a delivery ticket number entered by the user, then display the delivery job details of this ticket and ask the user if thay would like to save a receipt of this delivery job. If 'No' = then returns to the main menu. If 'Yes', it will save all of the details displayed of this delivery job to a text file to the 'delivery_receipts' folder.
 
-***Logic*** - The delivery_receipt.py file will import 2 Python packages:
-1. json module using the load function = to read a json file.
-2. os module using the join & makedirs functions = to join the txt file path components & check the folder location exists.
+***Logic*** - The delivery_receipt.py file will import the following Python packages:
+1. emoji package. 
+2. colorama package.
+3. prettytable package
+4. json module using the load function = to read a json file.
+5. os module using the join & makedirs functions = to join the txt file path components & check the folder location exists.
 The del_receipt function will ask for a ticket number, then search & find this numbered json file located in the delivery_jobs folder. The individual values of this json ticket number will be then saved into variables and displayed to the user.
 
 The user will be asked to save a delivery receipt or not. If No = returns to main menu. If Yes = saves all the string variables to a text file located in the delivery_receipts folder.
@@ -315,6 +311,20 @@ Input 'Y' = create ticket number, book / save the details:
 
 ![number 1.3](./docs/Feature%20One%20image3.png)
 
+![number 2](./docs/Feature%20Two%20image.png)
+
+NOTE:
+Australia Post DO NOT accept packages based on 3 values:
+1. A maximum actual weight of 22kg.
+2. A maximum dimension of 105cm.
+3. A maximum cubic dimension of 0.25 cubic metres.
+
+If any one of these are entered by user or calculated, a warning will display advising the user to contact Australia Post for further instructions and return them to the main menu.
+
+![dimensions error1](./docs/enter%20dimensions%20errors%203.png)
+![dimensions error2](./docs/enter%20dimensions%20errors%204.png)
+![dimensions error3](./docs/enter%20dimensions%20errors%205.png)
+
 #### Estimate package Delivery Times:
 Selecting number 2 will start the feature of determining an estimated time a package will take to be delivered fron one postcode to another.
 The application will ask all the questions required for the users inputs to estimate a time. These will be:
@@ -323,9 +333,28 @@ The application will ask all the questions required for the users inputs to esti
 
 The estimated delivery time will be displayed to the user in 'number of days'.
 
-![number 2](./docs/Feature%20Two%20image.png)
+![number 3](./docs/Feature%20Three%20image.png)
 
 #### Save a Delivery Receipt:
+Selecting number 3 will start the feature of saving a delivery receipt based off a users job delivery ticket number.
+ - The user will be asked to enter their ticket number.
+ - The job delivery details will be displayed to the user.
+ - They will be asked to proceed and save a delivery receipt.
+ - A 'N' answer, cancels the process and returns to main menu.
+ - A 'Y' answer, will save a receipt as a text file, which can then be printed.
+
+![number 4](./docs/Feature%20Four%20image.png)
+
+If users enter a incorrect ticket number the following error will display and ask the question:
+'Have you lost or forgotten your ticket number ?' 
+ - A 'Y' answer, cancels the process and returns to main menu.
+ - A 'N' answer, will ask the user again for the ticket number.
+
+![number 4.1](./docs/Cannot%20find%20file%20error.png)
+
+## Thankyou I hope you enjoy using the Packing Delivery Application & helps you with your deliveries !
+🚚 📦 😁 📮
+
 ## References:
 
 Post, A., 2024, Australia Post MS11 Post Charges Booklet as at 1 July 2024 [Online]
