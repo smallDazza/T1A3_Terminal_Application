@@ -3,7 +3,7 @@
 
 ### GitHub Repository Link: [GitHub Repository](https://github.com/smallDazza/T1A3_Terminal_Application)
 
-### User Help: needing help instructions for this application ?, go straight to:  [Help Documentation](#help-documentation)
+### Needing help instructions for this application ? go straight to:  [Help Documentation](#help-documentation)
 
 ## Application Scope:
 
@@ -82,7 +82,7 @@ If user enters a 'N' the application will return to the main menu. If 'Y' a rand
 
 ### **Feature Three**:
 **Estimate Package Delivery Times & Distance:**
-***Description*** - This feature for Estimate Package Delivery Times & Distance will ask the user to enter 2 postcode numbers, the senders postcode and the receivers postcode. Based on the 2 postcodes entered and the postal zones they belong to, the application will display an estimated delivery time in number of days & a estimated distance in kms to the user. The delivery time feature has been based on the estimates from the Australia Post parcel post delivery estimator grid 2023. These can be viewed from this pdf:
+***Description*** - This feature for Estimate Package Delivery Times & Distance will ask the user to enter 2 postcode numbers, the senders postcode and the receivers postcode. Based on the 2 postcodes entered  the application will display an estimated delivery time in number of days & a estimated distance in kms to the user. The delivery time feature has been based on the estimates from the Australia Post parcel post delivery estimator grid 2023. These can be viewed from this pdf:
 [Australia Post Transit Grid Delivery Estimator 2023 - Page 2 Parcel Post](https://auspost.com.au/content/dam/auspost_corp/media/documents/domestic-parcels-delivery-estimator.pdf).
 
 The distance in kms is calculated using two processes:
@@ -242,7 +242,7 @@ Created a file called 'testing.py' and imported Pythons 'unittest' module. The f
 
 Manually tested Feature 3 -Distance in kms:
 
-Entered the longitude / latitude details for 2 postcodes, from 'australian_postcodes.csv'Compared, into this haversine calculator website: [Online Haversine - Distance](https://www.vcalc.com/wiki/vcalc/haversine-distance)
+Entered the longitude / latitude details for 2 postcodes (from 'australian_postcodes.csv') into this haversine calculator website: [Online Haversine - Distance](https://www.vcalc.com/wiki/vcalc/haversine-distance)
 
 Then compared to the number 2 option from main menu:
 
