@@ -362,6 +362,8 @@ The estimated delivery time will be displayed to the user in 'number of days'. T
 
 ![number 3](./docs/Feature%20Three%20image.png)
 
+Should our data not be able to calculate the travelling distance, a warning will apologise for this.
+
 #### Save a Delivery Receipt:
 Selecting number 3 will start the feature of saving a delivery receipt based off a users job delivery ticket number.
  - The user will be asked to enter their ticket number.

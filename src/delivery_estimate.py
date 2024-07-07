@@ -30,9 +30,9 @@ def del_estimate():
         f"{Fore.WHITE}The estimated number of days delivery time for a package between" +
         f" {postcode_from} and {postcode_to} is: {Style.BRIGHT}{Fore.YELLOW}{delivery_time} Days.{Fore.RESET}\n")
     if del_distance == -1:
-        print("Sorry our data could not work out the traveling distance at this time.\n")
+        print("Sorry our data could not work out the travelling distance at this time.\n")
     else:
-        print(f"{Fore.WHITE}The estimated traveling distance between these two postcodes is {Style.BRIGHT}{Fore.YELLOW}{del_distance:.2f} kms.\n")
+        print(f"{Fore.WHITE}The estimated travelling distance between these two postcodes is {Style.BRIGHT}{Fore.YELLOW}{del_distance:.2f} kms.\n")
     print(f"{Fore.WHITE}Thankyou. To get a delivery cost quotation, please select number 1 from the Main Menu.{Fore.RESET}\n")
 
     return

@@ -1,0 +1,21 @@
+Here is ticket number 39823. Delivery details:
+
+    	Senders Name: Dazza small
+
+    	Senders Contact Number: 0411 213 459
+
+    	Senders Postcode: 4525
+
+    	Receivers Name: Michael Petrulis
+
+    	Receivers Address: 3675 Yeriebah street, Castle Hill, NSW
+
+    	Receivers Postcode: 2154
+
+    	Package Calculated Weight: 21
+
+    	Package Delivery Cost: $50.05
+
+    	Date Booked: 07-07-2024
+
+    
