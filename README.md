@@ -7,7 +7,7 @@
 
 ## Application Scope:
 
-This Package Delivery Application is to provide users an estimated delivery cost and delivery time for any items they are wanting to send within Australia based on their inputs of the package dimensions and weight. Should the user decide to go ahead with the quoted delivery, the application will generate a job delivery ticket number. This ticket number can also be used by the user to save a delivery receipt with all the delivery job details for future reference.
+This Package Delivery Application is to provide users an estimated delivery cost and delivery time & distance for any items they are wanting to send within Australia based on their inputs of the package dimensions and weight. Should the user decide to go ahead with the quoted delivery, the application will generate a job delivery ticket number. This ticket number can also be used by the user to save a delivery receipt with all the delivery job details for future reference.
 
 ## Table Of Contents:
 
@@ -81,17 +81,24 @@ All the user inputs of sender name & contact, receiver name & address, postcodes
 If user enters a 'N' the application will return to the main menu. If 'Y' a random number will be generated, this will be assigned as the job ticket number. The date in a format of dd-mm-yyyy will be assigned to a date_booked variable. Both these will then be added to the delivery_job dictionary. Then the entire delivery_job dictionary will be written as a json file and saved as the ticket number in the delivery_jobs folder. 
 
 ### **Feature Three**:
-**Estimate Package Delivery Times:**
-***Description*** - This feature for Estimate Package Delivery Times will ask the user to enter 2 postcode numbers, the senders postcode and the receivers postcode. Based on the 2 postcodes entered and the postal zones they belong to, the application will display an estimated delivery time in number of days to the user. This feature has been based on the estimates from the Australia Post parcel post delivery estimator grid 2023. These can be viewed from this pdf:
-[Australia Post Transit Grid Delivery Estimator 2023 - Page 2 Parcel Post](https://auspost.com.au/content/dam/auspost_corp/media/documents/domestic-parcels-delivery-estimator.pdf)
+**Estimate Package Delivery Times & Distance:**
+***Description*** - This feature for Estimate Package Delivery Times & Distance will ask the user to enter 2 postcode numbers, the senders postcode and the receivers postcode. Based on the 2 postcodes entered and the postal zones they belong to, the application will display an estimated delivery time in number of days & a estimated distance in kms to the user. The delivery time feature has been based on the estimates from the Australia Post parcel post delivery estimator grid 2023. These can be viewed from this pdf:
+[Australia Post Transit Grid Delivery Estimator 2023 - Page 2 Parcel Post](https://auspost.com.au/content/dam/auspost_corp/media/documents/domestic-parcels-delivery-estimator.pdf).
 
-***Logic*** - In the delivery_estimate.py file, is the del_estimate function. From both the costpackage & timepackage packages, the delivery_estimate file is importing the following functions and their uses:
+The distance in kms is calculated using two processes:
+1. A free Australian postcodes csv database with longitude & latitudes, available here: [Download Free Database of Australian Postcodes](https://www.matthewproctor.com/australian_postcodes)
+2. Using the Haversine formula to find distance between 2 points, available here for Python3: [Haversine formula to find distance between two points on a sphere](https://www.geeksforgeeks.org/haversine-formula-to-find-distance-between-two-points-on-a-sphere/)
+
+***Logic: Delivery Times*** - In the delivery_estimate.py file, is the del_estimate function. From both the costpackage & timepackage packages, the delivery_estimate file is importing the following functions and their uses:
 1. emoji package.
 2. colorama package.
 3. send_code & rece_code functions from the postcode_entry.py file. This is re-used in exactly the same way a what it is in feature one.
 4. del_time function from the delivery_times file. This function will return a specific delivery time in the number of days based on the postal zones the postal codes belong to.
 
 The sender and receiver postcodes inputed from the post_zone function will return the postal zones these postcodes belong to. Then these zones will be used on the delivery_daytimes list of delivery times (for the same zones), which return the estimated delivery times (row, column) between the 2 postal code zones according to the AusPost Transit Grid Delivery Estimator August 2023 update pdf.
+
+***Logic: Distance in kms*** - located in the timepackge folder is the 'australian_postcodes.csv' file and the distance.py file. The delivery_estimate.py file will call the km_distance function = sending the two user postcodes as strings.
+The find_csv function will use these 2 postcodes to return the longitude & latitude for each postcode. These 4 floats are then used in the haversine_distance function to calculate the distance in kms between the 2 postcodes longitudes & latitudes, which is returned to the delivery_estimate file for display. If longitudes & latitudes cannot be found for either postcode will return -1.
 
 ### **Feature Four**:
 ***Save A Delivery Receipt:***
@@ -138,6 +145,10 @@ Trello board - Issues found with error handling & testing, need to rework:
 
 ![Trello board - rework](./docs/Trello%20-%20rework.png)
 
+7/7/2024 decided to add a distance to Feature Three ticket (so rework):
+
+![Trello board - F3 rework](./docs/Trello%20rework%20=%20add%20distance.png)
+
 Trello board - completed:
 
 ![Trello done](./docs/Trello%20done.png)
@@ -155,6 +166,10 @@ Feature Two:
 Feature Three:
 
 ![Feature Three](./docs/Feature%20Three%20ticket%20tasks.png)
+
+Feature Three - rework 7/7/2024:
+
+![F3 rework](./docs/Feature%20three%20ticket%20add%20distance.png)
 
 Feature Four:
 
@@ -224,6 +239,15 @@ Created a file called 'testing.py' and imported Pythons 'unittest' module. The f
 ![zone charge test](./docs/unittest%202.png)
 ![post zone test](./docs/unittest%203.png)
 ![delivery time test](./docs/unittest%204.png)
+
+Manually tested Feature 3 -Distance in kms:
+
+Entered the longitude / latitude details for 2 postcodes, from 'australian_postcodes.csv'Compared, into this haversine calculator website: [Online Haversine - Distance](https://www.vcalc.com/wiki/vcalc/haversine-distance)
+
+Then compared to the number 2 option from main menu:
+
+![Feature3 Distance test](./docs/manual%20test%20Feature%203%20distance.png)
+
 
 ## Help Documentation:
 
@@ -328,13 +352,13 @@ If any one of these are entered by user or calculated, a warning will display ad
 ![dimensions error2](./docs/enter%20dimensions%20errors%204.png)
 ![dimensions error3](./docs/enter%20dimensions%20errors%205.png)
 
-#### Estimate package Delivery Times:
-Selecting number 2 will start the feature of determining an estimated time a package will take to be delivered from one postcode to another within Australia (excluding Norfolk Island).
-The application will ask all the questions required for the users inputs to estimate a time. These will be:
+#### Estimate package Delivery Times & Distance:
+Selecting number 2 will start the feature of determining an estimated time & the distance in kms, a package will take to be delivered from one postcode to another within Australia (excluding Norfolk Island).
+The application will ask all the questions required for the users inputs to estimate a time & distance. These will be:
  - Postcode sending the package from.
  - Postcode the package is being delivered to.
 
-The estimated delivery time will be displayed to the user in 'number of days'.
+The estimated delivery time will be displayed to the user in 'number of days'. The estimated distance between the 2 postcodes will be displayed in 'kms'.
 
 ![number 3](./docs/Feature%20Three%20image.png)
 
@@ -365,6 +389,15 @@ Available at: https://auspost.com.au/content/dam/auspost_corp/media/documents/po
 
 Post, A., 2023, AusPost Transit Grid Delivery Estimator August 2023 update [Online]
 Available at: https://auspost.com.au/content/dam/auspost_corp/media/documents/domestic-parcels-delivery-estimator.pdf
+
+Proctor, M, 2024, Download Free Database of Australian Postcodes [Online]
+Available at:  https://www.matthewproctor.com/australian_postcodes
+
+Prakher, 2022, Haversine formula to find distance between two points on a sphere / Python3 [Online]
+Available at: https://www.geeksforgeeks.org/haversine-formula-to-find-distance-between-two-points-on-a-sphere/
+
+Heckman, K, 2023, Haversine - Distance online calculator [Online]
+Available at:  https://www.vcalc.com/wiki/vcalc/haversine-distance
 
 Trello Board, 2024, T1A3 - Package Delivery App [Online]
 Available at: https://trello.com/b/7mEUfMFB/t1a3-package-delivery-app
