@@ -34,7 +34,7 @@ def main_menu():
         print(
             f"\t{Fore.CYAN}1 - {emoji.emojize(':money_bag:')} Package Deivery Cost Calculator.{Fore.RESET}\n")
         print(
-            f"\t{Fore.WHITE}2 - {emoji.emojize(':stopwatch:')}  Estimate Package Delivery Times.{Fore.RESET}\n")
+            f"\t{Fore.WHITE}2 - {emoji.emojize(':stopwatch:')}  Estimate Package Delivery Times & Distance.{Fore.RESET}\n")
         print(
             f"\t{Fore.BLUE}3 - {emoji.emojize(':receipt:')} Save a Delivery Receipt.{Fore.RESET}\n")
         print(
